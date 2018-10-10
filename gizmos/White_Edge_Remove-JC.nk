@@ -1,0 +1,116 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+ name J_White_Edge_Remove
+ tile_color 0x1fff00ff
+ selected true
+ xpos 297
+ ypos 18
+ addUserKnob {20 User}
+ addUserKnob {7 keyer l Keyer}
+ addUserKnob {7 Erode R 0 100}
+ addUserKnob {41 size_1 l Soft T Blur1.size}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 blanco l Torelance R 0 0.2}
+ addUserKnob {7 tolerance_rango l ToleranceRango}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 gain l Color T ColorCorrect1.gain}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 312
+  ypos 326
+  number 1
+ }
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos 312
+  ypos 356
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 436
+  ypos 12
+ }
+set N26af7250 [stack 0]
+ Dot {
+  name Dot3
+  xpos 622
+  ypos 15
+ }
+set N4af1c110 [stack 0]
+ Dot {
+  name Dot1
+  xpos 784
+  ypos 15
+ }
+set N26af91e0 [stack 0]
+ Keyer {
+  range {{parent.keyer/7+0.857143} {range.A} 1 1}
+  name Keyer2
+  selected true
+  xpos 750
+  ypos 93
+  addUserKnob {20 User}
+ }
+ Invert {
+  name Invert1
+  xpos 750
+  ypos 133
+ }
+ Dilate {
+  size {{parent.Erode}}
+  name Dilate1
+  xpos 750
+  ypos 176
+ }
+ Blur {
+  name Blur1
+  xpos 750
+  ypos 208
+ }
+push $N26af91e0
+ Dot {
+  name Dot2
+  xpos 908
+  ypos 15
+ }
+ Keyer {
+  operation "luminance key"
+  range {{parent.blanco-(parent.tolerance_rango/10)} {parent.blanco+(parent.tolerance_rango/10)} 1 1}
+  name Keyer1
+  xpos 874
+  ypos 356
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge2
+  xpos 750
+  ypos 360
+ }
+push $N4af1c110
+ ColorCorrect {
+  inputs 1+1
+  gain 0.1
+  name ColorCorrect1
+  xpos 588
+  ypos 360
+ }
+push $N26af7250
+ Keymix {
+  inputs 3
+  name Keymix1
+  xpos 436
+  ypos 356
+ }
+ Output {
+  name Output1
+  xpos 436
+  ypos 534
+ }
+end_group

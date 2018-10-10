@@ -1,0 +1,48 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+ name J_SendToBackburner
+ selected true
+ xpos 120
+ ypos -9
+ addUserKnob {20 User}
+ addUserKnob {22 this_project l "This Project" T "scriptname = os.path.basename(nuke.root().name()).replace(\".nk\", \"\");\n\nfirstframe = nuke.thisNode().input(0).firstFrame()\nlastframe = nuke.thisNode().input(0).lastFrame()\n\n\nnode = nuke.thisNode()\n\nnode\[\"job_name\"].setValue(scriptname)\n\nnode\[\"start_frame\"].setValue(firstframe)\n\nnode\[\"end_frame\"].setValue(lastframe)\n\n\n\n\n" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {1 job_name l "Job Name"}
+ job_name "Job Name"
+ addUserKnob {26 ""}
+ addUserKnob {3 start_frame l "Frame Range"}
+ start_frame 1
+ addUserKnob {3 end_frame l "" -STARTLINE}
+ end_frame 100
+ addUserKnob {26 line3 l "" -STARTLINE}
+ addUserKnob {26 line4 l "" -STARTLINE}
+ addUserKnob {3 task_size l "Task Size"}
+ task_size 10
+ addUserKnob {26 line5 l "" -STARTLINE}
+ addUserKnob {3 priority l Priority}
+ priority 50
+ addUserKnob {26 line2 l "" -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {1 manager l "Manager Name"}
+ manager VisualFX.local
+ addUserKnob {1 server_list l Server}
+ addUserKnob {1 server_group l "Server Group"}
+ addUserKnob {6 use_proxy l "Use proxy" +STARTLINE}
+ addUserKnob {6 manually_start_job l "Manually Start Job" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {22 render l Render T "import os\n\n# SendToBackburner by Francisco Contreras From JumpCats\n\ncom= '\"'\nes =' '\ncmdjob = '/usr/discreet/backburner/cmdjob'\nNuke = nuke.EXE_PATH\nJobName = nuke.thisNode()\['job_name'].value()\nManager = nuke.thisNode()\['manager'].value()\nProject = nuke.root().knob( 'name' ).value()\nProject = Project.replace(\" \", \"\\ \");\nnframe = ' %tp1-%tp2 '\nserverlist =  nuke.thisNode()\['server_list'].value()\nservergroup =  nuke.thisNode()\['server_group'].value()\nwrite = nuke.thisNode().input(0)\['name'].value()\n\n\n\nsuspended = nuke.thisNode().knob('manually_start_job').value()\n\nif suspended:\n   suspended = '-suspended'\nelse:\n   suspended = ''      \n    \n\n\n\nproxy = nuke.thisNode().knob('use_proxy').value()\n\nif proxy:\n   proxy = '-p'\nelse:\n   proxy = '-f'      \n\n\n\nstartframe = nuke.thisNode()\['start_frame'].value()\nendframe = nuke.thisNode()\['end_frame'].value()\ntasksize = nuke.thisNode()\['task_size'].value()\npriority =  str(int(nuke.thisNode()\['priority'].value()))\n\n\n\nlimit = nuke.thisNode().input(0)\n\nlimit\[\"use_limit\"].setValue(1)\nlimit\[\"first\"].setValue(startframe)\nlimit\[\"last\"].setValue(endframe)\n\n\n\n\nendframe = str(((endframe-startframe)/tasksize)+1)\n\nif endframe.isdigit(): \n   endframe = int(endframe)-1\nelse:\n   endframe = int(float(endframe))\n\n\nendframe = str(int(endframe)) \ntasksize = str(int(tasksize))\nstartframe = str(int(startframe)) \n\n\n\nsave = nuke.toNode(\"root\").name() \nnuke.scriptSave(save) \n\n\n\n\ncmd = cmdjob+es+\"-jobName:\"+es+com+JobName+com+es+\"-priority:\"+priority+es+suspended+es+\"-numTasks:\"+endframe+es+\"-tp_jump:\"+tasksize+es+\"-tp_start:\"+startframe+es+\"-manager:\"+com+Manager+com+es+\"-servers:\"+com+es+serverlist+com+es+\"-group:\"+com+es+servergroup+com+es+Nuke+es+\"-X\"+es+write+es+proxy+es+Project+es+nframe\n\nos.system(cmd)\n\nnuke.message(\"Job Sended.\")\n\nprint cmd" +STARTLINE}
+}
+ Input {
+  inputs 0
+  name Write
+  xpos 0
+  ypos 29
+ }
+ Output {
+  name Output1
+  xpos 0
+  ypos 300
+ }
+end_group

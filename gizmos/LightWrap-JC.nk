@@ -1,0 +1,207 @@
+set cut_paste_input [stack 0]
+version 9.0 v5
+push $cut_paste_input
+Group {
+ name J_LightWrap
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos -621
+ ypos 365
+ addUserKnob {20 LightWrap}
+ addUserKnob {41 size T Blur10.size}
+ addUserKnob {7 offset R 0.1 3}
+ offset 1
+ addUserKnob {26 ""}
+ addUserKnob {41 gain T ColorCorrect1.gain}
+ addUserKnob {7 saturation R 0 4}
+ saturation 1
+ addUserKnob {26 ""}
+ addUserKnob {41 BGBlur T Blur2.size}
+ addUserKnob {7 Tolerance}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x49415eff
+  label "exponential\n\n"
+  note_font_size 42
+  xpos 204
+  ypos -389
+  bdwidth 591
+  bdheight 538
+ }
+ Input {
+  inputs 0
+  name A
+  label "A\n"
+  xpos -251
+  ypos -505
+ }
+ Dot {
+  name Dot2
+  xpos -217
+  ypos -403
+ }
+set Nc3077280 [stack 0]
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos -182
+  ypos -411
+ }
+set Ndcab9fa0 [stack 0]
+ Dot {
+  name Dot1
+  xpos -148
+  ypos 187
+ }
+push $Ndcab9fa0
+ Input {
+  inputs 0
+  name B
+  label B
+  xpos -54
+  ypos -560
+  number 1
+ }
+ Keyer {
+  operation "luminance key"
+  range {{parent.Tolerance i} {parent.Tolerance i} 1 1}
+  name Keyer1
+  xpos -54
+  ypos -503
+ }
+ Premult {
+  name Premult3
+  xpos -54
+  ypos -455
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos -54
+  ypos -411
+ }
+ Invert {
+  channels alpha
+  name Invert1
+  xpos -54
+  ypos -347
+ }
+ Blur {
+  channels rgb
+  size 50
+  name Blur2
+  xpos -54
+  ypos -315
+ }
+set Nbaca4e0 [stack 0]
+ Dot {
+  name Dot3
+  xpos 485
+  ypos -312
+ }
+set N1bdec9f0 [stack 0]
+ Blur {
+  size 5
+  name Blur10
+  xpos 200
+  ypos -133
+ }
+push $N1bdec9f0
+ Blur {
+  size {{parent.Blur10.size*2}}
+  name Blur6
+  xpos 320
+  ypos -119
+ }
+push $N1bdec9f0
+ Blur {
+  size {{parent.Blur10.size*4}}
+  name Blur7
+  xpos 451
+  ypos -125
+ }
+push 0
+push $N1bdec9f0
+ Blur {
+  size {{parent.Blur10.size*16}}
+  name Blur8
+  xpos 675
+  ypos -115
+ }
+push $N1bdec9f0
+ Blur {
+  size {{parent.Blur10.size*8}}
+  name Blur9
+  xpos 570
+  ypos -118
+ }
+ Merge2 {
+  inputs 5+1
+  operation screen
+  name Merge5
+  selected true
+  xpos 428
+  ypos 52
+ }
+ Gamma {
+  channels alpha
+  value {{parent.offset}}
+  name Gamma1
+  selected true
+  xpos 428
+  ypos 78
+ }
+push $Nbaca4e0
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos -54
+  ypos 78
+ }
+ ColorCorrect {
+  saturation {{parent.saturation}}
+  name ColorCorrect1
+  xpos -54
+  ypos 139
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos -57
+  ypos 183
+ }
+ Premult {
+  name Premult1
+  xpos -57
+  ypos 227
+ }
+push $Nc3077280
+ AddChannels {
+  channels alpha
+  name AddChannels2
+  xpos -254
+  ypos 79
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  maskChannelInput rgba.alpha
+  mix 0.1
+  name Merge2
+  xpos -254
+  ypos 221
+ }
+ Output {
+  name Output1
+  xpos -254
+  ypos 328
+ }
+end_group

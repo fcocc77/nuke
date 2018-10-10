@@ -1,0 +1,32 @@
+set cut_paste_input [stack 0]
+version 8.0 v3
+push $cut_paste_input
+Group {
+name J_BBox_Reformat
+tile_color 0xff9455ff
+selected true
+xpos 6174
+ypos 528
+addUserKnob {20 User}
+}
+Input {
+inputs 0
+name Input
+xpos -421
+ypos -2166
+}
+Crop {
+box {{Input.bbox.x} {Input.bbox.y} {Input.bbox.r} {Input.bbox.t}}
+reformat true
+crop false
+name Crop1
+selected true
+xpos -421
+ypos -2087
+}
+Output {
+name Output1
+xpos -421
+ypos -2051
+}
+end_group

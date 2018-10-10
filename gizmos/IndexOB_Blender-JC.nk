@@ -1,0 +1,85 @@
+set cut_paste_input [stack 0]
+version 8.0 v3
+push $cut_paste_input
+Group {
+ name J_IndexOB_Blender
+ tile_color 0xff5f00ff
+ selected true
+ xpos 163
+ ypos -74
+ addUserKnob {20 User}
+ addUserKnob {41 ID_Channel T Shuffle1.in}
+ addUserKnob {3 indexobject l IndexObject}
+ indexobject 1
+ addUserKnob {7 ErodeBlur l "Erode Blur" R 0 10}
+ addUserKnob {41 size l Blur T Blur2.size}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -248
+  ypos 80
+ }
+ Shuffle {
+  in none
+  red white
+  green white
+  blue white
+  name Shuffle1
+  xpos -248
+  ypos 104
+ }
+ ZSlice {
+  channels rgb
+  Zchan rgba.alpha
+  center {{parent.indexobject}}
+  dof 1
+  name ZSlice1
+  xpos -248
+  ypos 128
+ }
+ Clamp {
+  name Clamp1
+  xpos -248
+  ypos 160
+ }
+ Erode {
+  channels rgba
+  size {{-parent.Erode2.size}}
+  name Erode1
+  xpos -248
+  ypos 204
+ }
+ Erode {
+  channels rgba
+  size {{parent.ErodeBlur}}
+  name Erode2
+  xpos -248
+  ypos 228
+ }
+ Blur {
+  size 2
+  name Blur2
+  xpos -248
+  ypos 252
+ }
+ Remove {
+  operation keep
+  channels rgba
+  name Remove1
+  xpos -248
+  ypos 284
+ }
+ Shuffle {
+  in rgb
+  name Shuffle2
+  xpos -248
+  ypos 308
+ }
+ Output {
+  name Output1
+  selected true
+  xpos -248
+  ypos 356
+ }
+end_group

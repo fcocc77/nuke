@@ -1,0 +1,113 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Group {
+ name J_Drop_Shadows
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos -75
+ ypos -41
+ mapsize {0.15 0.15}
+ addUserKnob {20 User}
+ addUserKnob {41 offset l Color T ColorCorrect1.offset}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 angle l Angle R 0 360}
+ angle {0}
+ addUserKnob {7 width l Width}
+ width {0}
+ addUserKnob {41 size l Blur T Blur1.size}
+ addUserKnob {7 Opacity}
+ Opacity {1}
+ addUserKnob {41 invert_mask l "invert mask" T masks.invert_mask}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -918
+  ypos -103
+ }
+set N9bf15c0 [stack 0]
+ Input {
+  inputs 0
+  name mask
+  xpos -730
+  ypos 241
+  number 1
+ }
+ Invert {
+  name Invert1
+  xpos -730
+  ypos 184
+ }
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos -730
+  ypos 125
+ }
+push 0
+push $N9bf15c0
+ Shuffle {
+  in alpha
+  red black
+  green black
+  blue black
+  name Shuffle2
+  xpos -604
+  ypos -103
+ }
+ Transform {
+  translate {{"(parent.knob.width*300) * ((Input1.bbox.t-Input1.bbox.y)/400)" i} {curve i}}
+  rotate {{-parent.Transform14.rotate i x99 180}}
+  center {1296 968}
+  name Transform13
+  xpos -604
+  ypos -65
+ }
+ Transform {
+  rotate {{parent.angle}}
+  center {1296 968}
+  name Transform14
+  xpos -604
+  ypos -28
+ }
+ Blur {
+  size {0}
+  name Blur1
+  xpos -604
+  ypos 6
+ }
+ Grade {
+  channels alpha
+  white {{parent.Opacity i}}
+  name Grade1
+  xpos -604
+  ypos 52
+ }
+ Merge2 {
+  inputs 2+1
+  operation mask
+  name masks
+  selected true
+  xpos -730
+  ypos 58
+ }
+ ColorCorrect {
+  unpremult rgba.alpha
+  name ColorCorrect1
+  xpos -814
+  ypos 60
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos -918
+  ypos 58
+ }
+ Output {
+  name Output1
+  xpos -918
+  ypos 172
+ }
+end_group

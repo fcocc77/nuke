@@ -1,0 +1,371 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push $cut_paste_input
+Group {
+ inputs 9
+ name BreakDown
+ tile_color 0x55bfffff
+ selected true
+ xpos 133
+ ypos 295
+ addUserKnob {20 User}
+ addUserKnob {4 type l "Transition Type" M {Slide Fade}}
+ addUserKnob {26 ""}
+ addUserKnob {3 frame_start l "Frame Start"}
+ frame_start 10
+ addUserKnob {3 frame_layer l "Frame Layer"}
+ frame_layer 10
+ addUserKnob {3 frame_transition l "Frame Transitions"}
+ frame_transition 10
+}
+ Constant {
+  inputs 0
+  color {{"curve ((x+transition-1)/transition)" x1 0 1}}
+  name Constant1
+  xpos 437
+  ypos -180
+  addUserKnob {20 User}
+  addUserKnob {3 transition}
+  transition {{parent.frame_transition}}
+ }
+ Reformat {
+  type "to box"
+  box_width {{Original.bbox.r}}
+  box_height {{Original.bbox.t}}
+  box_fixed true
+  resize height
+  name Reformat1
+  xpos 437
+  ypos -108
+ }
+ Reformat {
+  inputs 0
+  type "to box"
+  box_width {{Original.bbox.r}}
+  box_height {{Original.bbox.t}}
+  box_fixed true
+  resize height
+  name Reformat2
+  xpos 591
+  ypos -95
+ }
+ Ramp {
+  p0 {{"curve ((x+transition-1)/transition)*Original.bbox.r" x1 0 1} 0}
+  p1 {{p0.x-1} {p0.y}}
+  name slide
+  selected true
+  xpos 591
+  ypos -32
+  addUserKnob {20 User}
+  addUserKnob {3 transition}
+  transition {{parent.frame_transition}}
+ }
+ Switch {
+  inputs 2
+  which {{type}}
+  name Switch1
+  xpos 437
+  ypos -32
+ }
+ Dot {
+  name Dot1
+  xpos 471
+  ypos 32
+ }
+set N5ac9bb0 [stack 0]
+ Dot {
+  name Dot2
+  xpos 471
+  ypos 124
+ }
+set N828b7f0 [stack 0]
+ Dot {
+  name Dot3
+  xpos 471
+  ypos 220
+ }
+set N834d3b0 [stack 0]
+ Dot {
+  name Dot4
+  xpos 471
+  ypos 303
+ }
+set N71667b0 [stack 0]
+ Dot {
+  name Dot5
+  xpos 471
+  ypos 399
+ }
+set N827c340 [stack 0]
+ Dot {
+  name Dot6
+  xpos 471
+  ypos 474
+ }
+set N70179f0 [stack 0]
+ Dot {
+  name Dot7
+  xpos 471
+  ypos 562
+ }
+set N8225640 [stack 0]
+ Dot {
+  name Dot8
+  xpos 471
+  ypos 649
+ }
+set N1125c8d0 [stack 0]
+ Dot {
+  name Dot9
+  xpos 471
+  ypos 725
+ }
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*8}}
+  time ""
+  name TimeOffset8
+  xpos 301
+  ypos 721
+ }
+ TimeOffset {
+  time_offset {{parent.frame_start}}
+  time ""
+  name Frame_Start
+  xpos 191
+  ypos 721
+ }
+ set C5ad7560 [stack 0]
+ Input {
+  inputs 0
+  name Layer_8
+  xpos -277
+  ypos 721
+  number 9
+ }
+push $N1125c8d0
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*7}}
+  time ""
+  name TimeOffset7
+  xpos 304
+  ypos 645
+ }
+clone $C5ad7560 {
+  xpos 182
+  ypos 645
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_9
+  xpos -274
+  ypos 641
+  number 10
+ }
+push $N8225640
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*6}}
+  time ""
+  name TimeOffset6
+  xpos 308
+  ypos 558
+ }
+clone $C5ad7560 {
+  xpos 186
+  ypos 558
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_7
+  xpos -276
+  ypos 549
+  number 8
+ }
+push $N70179f0
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*5}}
+  time ""
+  name TimeOffset5
+  xpos 308
+  ypos 470
+ }
+clone $C5ad7560 {
+  xpos 186
+  ypos 470
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_5
+  xpos -273
+  ypos 475
+  number 6
+ }
+push $N827c340
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*4}}
+  time ""
+  name TimeOffset4
+  xpos 315
+  ypos 395
+ }
+clone $C5ad7560 {
+  xpos 193
+  ypos 395
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_6
+  xpos -272
+  ypos 395
+  number 7
+ }
+push $N71667b0
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*3}}
+  time ""
+  name TimeOffset3
+  xpos 312
+  ypos 299
+ }
+clone $C5ad7560 {
+  xpos 190
+  ypos 299
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_4
+  xpos -265
+  ypos 299
+  number 5
+ }
+push $N834d3b0
+ TimeOffset {
+  time_offset {{(parent.frame_transition+parent.frame_layer)*2}}
+  time ""
+  name TimeOffset2
+  xpos 314
+  ypos 216
+ }
+clone $C5ad7560 {
+  xpos 192
+  ypos 216
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_3
+  xpos -264
+  ypos 219
+  number 4
+ }
+push $N828b7f0
+ TimeOffset {
+  time_offset {{parent.frame_transition+parent.frame_layer}}
+  time ""
+  name TimeOffset1
+  xpos 314
+  ypos 120
+ }
+clone $C5ad7560 {
+  xpos 192
+  ypos 120
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_2
+  xpos -259
+  ypos 120
+  number 3
+ }
+push $N5ac9bb0
+clone $C5ad7560 {
+  xpos 188
+  ypos 28
+  selected false
+ }
+ Input {
+  inputs 0
+  name Layer_1
+  xpos -263
+  ypos 28
+  number 2
+ }
+ Input {
+  inputs 0
+  name Original
+  xpos -41
+  ypos -81
+ }
+ Keymix {
+  inputs 3
+  name Keymix2
+  xpos -41
+  ypos 22
+ }
+ Keymix {
+  inputs 3
+  name Keymix3
+  xpos -41
+  ypos 114
+ }
+ Keymix {
+  inputs 3
+  name Keymix4
+  xpos -41
+  ypos 213
+ }
+ Keymix {
+  inputs 3
+  name Keymix5
+  xpos -41
+  ypos 293
+ }
+ Keymix {
+  inputs 3
+  name Keymix6
+  xpos -41
+  ypos 389
+ }
+ Keymix {
+  inputs 3
+  name Keymix7
+  xpos -41
+  ypos 469
+ }
+ Keymix {
+  inputs 3
+  name Keymix8
+  xpos -41
+  ypos 543
+ }
+ Keymix {
+  inputs 3
+  name Keymix9
+  xpos -41
+  ypos 642
+ }
+ Keymix {
+  inputs 3
+  name Keymix10
+  xpos -41
+  ypos 715
+ }
+ Output {
+  name Output1
+  xpos -41
+  ypos 995
+ }
+end_group

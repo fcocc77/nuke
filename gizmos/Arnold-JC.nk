@@ -1,0 +1,260 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+add_layer {direct_diffuse direct_diffuse.red direct_diffuse.green direct_diffuse.blue}
+add_layer {indirect_diffuse indirect_diffuse.red indirect_diffuse.green indirect_diffuse.blue}
+add_layer {direct_specular direct_specular.red direct_specular.green direct_specular.blue}
+add_layer {indirect_specular indirect_specular.red indirect_specular.green indirect_specular.blue}
+Group {
+ name Arnold
+ tile_color 0xaa55ffff
+ selected true
+ xpos 332
+ ypos -578
+ addUserKnob {20 User}
+ addUserKnob {4 display_pass l "Pass Display" M {"Final Comp" "Direct Diffuse" "Indirect Diffuse" "Direct Specular" "Indirect Specular " ""}}
+ addUserKnob {6 combine l "Combine Pass" -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 from0 l "ID Object" T Copy1.from0}
+ addUserKnob {41 from0_2 l "Umpremult Mask" T Copy3.from0}
+ addUserKnob {26 ""}
+ addUserKnob {26 general_color l "Color Correction"}
+ addUserKnob {41 gain_4 l gain T ColorCorrect1.gain}
+ addUserKnob {41 gamma_4 l gamma T ColorCorrect1.gamma}
+ addUserKnob {41 saturation T ColorCorrect1.saturation}
+ addUserKnob {41 black l lift T lift.black}
+ addUserKnob {26 ""}
+ addUserKnob {26 direct_diffuse l "Direct Diffuse"}
+ addUserKnob {41 gain T direct_diffuse_color.gain}
+ addUserKnob {41 gamma T direct_diffuse_color.gamma}
+ addUserKnob {26 ""}
+ addUserKnob {26 indirect_diffuse l "Indirect Diffuse"}
+ addUserKnob {41 gain_1 l gain T indirect_diffuse_color.gain}
+ addUserKnob {41 gamma_1 l gamma T indirect_diffuse_color.gamma}
+ addUserKnob {26 ""}
+ addUserKnob {26 direct_specular l "Direct Specular"}
+ addUserKnob {41 gain_2 l gain T direct_specular_color.gain}
+ addUserKnob {41 gamma_2 l gamma T direct_specular_color.gamma}
+ addUserKnob {26 ""}
+ addUserKnob {26 indirect_specular l "Indirect Specular"}
+ addUserKnob {41 gain_3 l gain T indirect_specular_color.gain}
+ addUserKnob {41 gamma_3 l gamma T indirect_specular_color.gamma}
+ addUserKnob {26 ""}
+ addUserKnob {20 pass l Input}
+ addUserKnob {41 in l "Direct Diffuse" T direct_diffuse_.in}
+ addUserKnob {41 in_1 l "Indirect Diffuse" T indirect_diffuse_.in}
+ addUserKnob {41 in_2 l "Direct Specular" T direct_specular_.in}
+ addUserKnob {41 in_3 l "Indirect Specular" T indirect_specular_.in}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -1
+  ypos -62
+ }
+ Dot {
+  name Dot1
+  xpos 33
+  ypos 88
+ }
+set Na5e75110 [stack 0]
+ Dot {
+  name Dot6
+  xpos -124
+  ypos 88
+ }
+ Dot {
+  name Dot7
+  xpos -124
+  ypos 373
+ }
+set N96de9300 [stack 0]
+ Dot {
+  name Dot8
+  xpos -124
+  ypos 473
+ }
+set N89451e0 [stack 0]
+ Dot {
+  name Dot5
+  xpos -124
+  ypos 624
+ }
+set N96946690 [stack 0]
+ Dot {
+  name Dot9
+  xpos -124
+  ypos 729
+ }
+push $N96946690
+push $N89451e0
+push $Na5e75110
+ Dot {
+  name Dot4
+  xpos 148
+  ypos 88
+ }
+set N8855900 [stack 0]
+ Dot {
+  name Dot2
+  xpos 299
+  ypos 88
+ }
+set N87e9060 [stack 0]
+ Shuffle {
+  in indirect_specular
+  name indirect_specular_
+  xpos 442
+  ypos 84
+ }
+ ColorCorrect {
+  name indirect_specular_color
+  xpos 442
+  ypos 207
+ }
+set N8814770 [stack 0]
+push $N87e9060
+ Shuffle {
+  in direct_specular
+  name direct_specular_
+  xpos 265
+  ypos 134
+ }
+ ColorCorrect {
+  name direct_specular_color
+  xpos 265
+  ypos 169
+ }
+set Na45a740 [stack 0]
+push $N8855900
+ Shuffle {
+  in indirect_diffuse
+  name indirect_diffuse_
+  xpos 114
+  ypos 140
+ }
+ ColorCorrect {
+  name indirect_diffuse_color
+  xpos 114
+  ypos 219
+ }
+set N895e460 [stack 0]
+push $Na5e75110
+ Shuffle {
+  in direct_diffuse
+  name direct_diffuse_
+  xpos -1
+  ypos 133
+ }
+ ColorCorrect {
+  name direct_diffuse_color
+  xpos -2
+  ypos 170
+ }
+set Na6501680 [stack 0]
+push $N96de9300
+push $N8814770
+push $Na45a740
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge2
+  xpos 265
+  ypos 207
+ }
+ Dot {
+  name Dot3
+  xpos 299
+  ypos 285
+ }
+push $N895e460
+push $Na6501680
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge1
+  xpos -1
+  ypos 219
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge3
+  xpos -1
+  ypos 281
+ }
+ ColorCorrect {
+  name ColorCorrect1
+  xpos -1
+  ypos 325
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.alpha
+  name Copy2
+  xpos -1
+  ypos 363
+ }
+ Switch {
+  inputs 5
+  which {{display_pass}}
+  name Switch1
+  xpos 308
+  ypos 414
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy3
+  xpos 308
+  ypos 463
+ }
+ Unpremult {
+  name Unpremult2
+  xpos 308
+  ypos 521
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 308
+  ypos 614
+ }
+ Premult {
+  name Premult1
+  xpos 308
+  ypos 652
+ }
+ Grade {
+  unpremult rgba.alpha
+  name lift
+  selected true
+  xpos 308
+  ypos 678
+ }
+set N863df80 [stack 0]
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge4
+  xpos 183
+  ypos 725
+ }
+push $N863df80
+ Switch {
+  inputs 2
+  which {{combine}}
+  name Switch2
+  xpos 308
+  ypos 725
+ }
+ Output {
+  name Output1
+  xpos 308
+  ypos 801
+ }
+end_group

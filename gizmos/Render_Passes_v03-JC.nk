@@ -1,0 +1,1731 @@
+set cut_paste_input [stack 0]
+version 9.0 v6
+push $cut_paste_input
+Group {
+ name J_RP_Join
+ tile_color 0xffaaaaff
+ selected true
+ xpos 47
+ ypos -39
+ addUserKnob {20 User}
+ addUserKnob {41 in l color T diffuse_material_color.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_1 l "direct light 1" T direct_light_1.in}
+ addUserKnob {41 in_20 l "direct light 2" T direct_light_2.in}
+ addUserKnob {41 in_21 l "direct light 3" T direct_light_3.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_4 l "specular 1" T specular.in}
+ addUserKnob {41 in_22 l "specular 2" T specular2.in}
+ addUserKnob {41 in_23 l "specular 3" T specular2.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_2 l "indirect light" T indirect_light.in}
+ addUserKnob {41 in_3 l AO T AO.in}
+ addUserKnob {41 in_5 l reflection T reflection.in}
+ addUserKnob {41 in_6 l refraction T refraction.in}
+ addUserKnob {41 in_7 l depth T depth.in}
+ addUserKnob {41 in_11 l "motion vector" T motion_vector.in}
+ addUserKnob {41 in_24 l "uv pass" T uv_pass.in}
+ addUserKnob {41 in_8 l "matte all" T matte_all.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_9 l "matte object 01" T matte_object_1.in}
+ addUserKnob {41 in_10 l "matte object 02" T matte_object_2.in}
+ addUserKnob {41 in_12 l "matte object 03" T matte_object_3.in}
+ addUserKnob {41 in_13 l "matte object 04" T matte_object_4.in}
+ addUserKnob {41 in_14 l "matte object 05" T matte_object_5.in}
+ addUserKnob {41 in_15 l "matte object 06" T matte_object_6.in}
+ addUserKnob {41 in_16 l "matte object 07" T matte_object_7.in}
+ addUserKnob {41 in_17 l "matte object 08" T matte_object_8.in}
+ addUserKnob {41 in_18 l "matte object 09" T matte_object_9.in}
+ addUserKnob {41 in_19 l "matte object 10" T matte_object_10.in}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -547
+  ypos -380
+ }
+ Dot {
+  name Dot2
+  xpos -513
+  ypos -302
+ }
+set N59d6b20 [stack 0]
+ Dot {
+  name Dot3
+  xpos -352
+  ypos -302
+ }
+set N5aa9e30 [stack 0]
+ Dot {
+  name Dot24
+  xpos -224
+  ypos -302
+ }
+set N5b1caf0 [stack 0]
+ Dot {
+  name Dot25
+  xpos -129
+  ypos -302
+ }
+set N5a97d10 [stack 0]
+ Dot {
+  name Dot4
+  xpos -22
+  ypos -302
+ }
+set N59cf130 [stack 0]
+ Dot {
+  name Dot5
+  xpos 88
+  ypos -302
+ }
+set N5a88490 [stack 0]
+ Dot {
+  name Dot6
+  xpos 198
+  ypos -302
+ }
+set N5a7b250 [stack 0]
+ Dot {
+  name Dot22
+  xpos 325
+  ypos -300
+ }
+set N5a82440 [stack 0]
+ Dot {
+  name Dot23
+  xpos 420
+  ypos -300
+ }
+set N5a05d60 [stack 0]
+ Dot {
+  name Dot7
+  xpos 544
+  ypos -300
+ }
+set N5a5a600 [stack 0]
+ Dot {
+  name Dot8
+  xpos 654
+  ypos -300
+ }
+set N4adc060 [stack 0]
+ Dot {
+  name Dot9
+  xpos 764
+  ypos -300
+ }
+set N5c224c0 [stack 0]
+ Dot {
+  name Dot10
+  xpos 895
+  ypos -300
+ }
+set N5ae3b70 [stack 0]
+ Dot {
+  name Dot26
+  xpos 1046
+  ypos -301
+ }
+set N5c217c0 [stack 0]
+ Dot {
+  name Dot11
+  xpos 1248
+  ypos -301
+ }
+set N59fe170 [stack 0]
+ Dot {
+  name Dot12
+  xpos 1383
+  ypos -301
+ }
+set N5b05930 [stack 0]
+ Dot {
+  name Dot13
+  xpos 1521
+  ypos -301
+ }
+set N5b02100 [stack 0]
+ Dot {
+  name Dot14
+  xpos 1698
+  ypos -301
+ }
+set N59d5600 [stack 0]
+ Dot {
+  name Dot15
+  xpos 1840
+  ypos -301
+ }
+set N4b40ff0 [stack 0]
+ Dot {
+  name Dot16
+  xpos 1994
+  ypos -301
+ }
+set N5ad67c0 [stack 0]
+ Dot {
+  name Dot17
+  xpos 2128
+  ypos -301
+ }
+set N56d7880 [stack 0]
+ Dot {
+  name Dot18
+  xpos 2259
+  ypos -301
+ }
+set N5cb58c0 [stack 0]
+ Dot {
+  name Dot19
+  xpos 2401
+  ypos -301
+ }
+set N5855970 [stack 0]
+ Dot {
+  name Dot20
+  xpos 2555
+  ypos -301
+ }
+set N56d0850 [stack 0]
+ Dot {
+  name Dot21
+  xpos 2689
+  ypos -301
+ }
+add_layer {matte_object_10 matte_object_10.red}
+ Shuffle {
+  in none
+  out matte_object_10
+  name matte_object_10
+  xpos 2655
+  ypos -257
+ }
+ Remove {
+  operation keep
+  channels matte_object_10
+  name Remove20
+  xpos 2655
+  ypos -233
+ }
+push $N56d0850
+add_layer {matte_object_09 matte_object_09.red}
+ Shuffle {
+  in none
+  out matte_object_09
+  name matte_object_9
+  xpos 2521
+  ypos -268
+ }
+ Remove {
+  operation keep
+  channels matte_object_09
+  name Remove19
+  xpos 2521
+  ypos -244
+ }
+push $N5855970
+add_layer {matte_object_08 matte_object_08.red}
+ Shuffle {
+  in none
+  out matte_object_08
+  name matte_object_8
+  xpos 2367
+  ypos -258
+ }
+ Remove {
+  operation keep
+  channels matte_object_08
+  name Remove18
+  xpos 2367
+  ypos -234
+ }
+push $N5cb58c0
+add_layer {matte_object_07 matte_object_07.red}
+ Shuffle {
+  in none
+  out matte_object_07
+  name matte_object_7
+  xpos 2225
+  ypos -252
+ }
+ Remove {
+  operation keep
+  channels matte_object_07
+  name Remove17
+  xpos 2225
+  ypos -228
+ }
+push $N56d7880
+add_layer {matte_object_06 matte_object_06.red}
+ Shuffle {
+  in none
+  out matte_object_06
+  name matte_object_6
+  xpos 2094
+  ypos -255
+ }
+ Remove {
+  operation keep
+  channels matte_object_06
+  name Remove16
+  xpos 2094
+  ypos -231
+ }
+push $N5ad67c0
+add_layer {matte_object_05 matte_object_05.red}
+ Shuffle {
+  in none
+  out matte_object_05
+  name matte_object_5
+  xpos 1960
+  ypos -251
+ }
+ Remove {
+  operation keep
+  channels matte_object_05
+  name Remove15
+  xpos 1960
+  ypos -225
+ }
+push $N4b40ff0
+add_layer {matte_object_04 matte_object_04.red}
+ Shuffle {
+  in none
+  out matte_object_04
+  name matte_object_4
+  xpos 1806
+  ypos -232
+ }
+ Remove {
+  operation keep
+  channels matte_object_04
+  name Remove14
+  xpos 1806
+  ypos -208
+ }
+push $N59d5600
+add_layer {matte_object_03 matte_object_03.red}
+ Shuffle {
+  in none
+  out matte_object_03
+  name matte_object_3
+  xpos 1664
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels matte_object_03
+  name Remove13
+  xpos 1664
+  ypos -202
+ }
+push $N5b02100
+add_layer {matte_object_02 matte_object_02.red}
+ Shuffle {
+  in none
+  out matte_object_02
+  name matte_object_2
+  xpos 1487
+  ypos -217
+ }
+ Remove {
+  operation keep
+  channels matte_object_02
+  name Remove11
+  xpos 1487
+  ypos -191
+ }
+push $N5b05930
+add_layer {matte_object_01 matte_object_01.red}
+ Shuffle {
+  in none
+  out matte_object_01
+  name matte_object_1
+  xpos 1349
+  ypos -214
+ }
+ Remove {
+  operation keep
+  channels matte_object_01
+  name Remove10
+  xpos 1349
+  ypos -188
+ }
+push $N59fe170
+add_layer {matte_all matte_all.red}
+ Shuffle {
+  in none
+  green black
+  out matte_all
+  name matte_all
+  xpos 1214
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels matte_all
+  name Remove9
+  xpos 1214
+  ypos -200
+ }
+push $N5c217c0
+add_layer {uv_pass uv_pass.nx uv_pass.ny uv_pass.nz}
+ Shuffle {
+  in none
+  out uv_pass
+  name uv_pass
+  xpos 1012
+  ypos -246
+ }
+ Remove {
+  operation keep
+  channels uv_pass
+  name Remove25
+  xpos 1012
+  ypos -220
+ }
+push $N5ae3b70
+ Shuffle {
+  in none
+  out motion
+  name motion_vector
+  xpos 861
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels motion
+  name Remove12
+  xpos 861
+  ypos -199
+ }
+push $N5c224c0
+ Shuffle {
+  in none
+  out depth
+  name depth
+  xpos 730
+  ypos -228
+ }
+ Remove {
+  operation keep
+  channels depth
+  name Remove8
+  xpos 730
+  ypos -202
+ }
+push $N4adc060
+add_layer {refraction refraction.red refraction.green refraction.blue}
+ Shuffle {
+  in none
+  out refraction
+  name refraction
+  xpos 620
+  ypos -228
+ }
+ Remove {
+  operation keep
+  channels refraction
+  name Remove7
+  xpos 620
+  ypos -202
+ }
+push $N5a5a600
+add_layer {reflection reflection.red reflection.green reflection.blue}
+ Shuffle {
+  in none
+  out reflection
+  name reflection
+  xpos 510
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels reflection
+  name Remove6
+  xpos 510
+  ypos -200
+ }
+push $N5a05d60
+add_layer {SPEC_specular_persp SPEC_specular_persp.red SPEC_specular_persp.green SPEC_specular_persp.blue}
+add_layer {specular_3 specular_3.red specular_3.green specular_3.blue}
+ Shuffle {
+  in SPEC_specular_persp
+  out specular_3
+  name specular3
+  xpos 386
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels specular_3
+  name Remove22
+  xpos 386
+  ypos -200
+ }
+push $N5a82440
+add_layer {specular_2 specular_2.red specular_2.green specular_2.blue}
+ Shuffle {
+  in none
+  out specular_2
+  name specular2
+  xpos 291
+  ypos -229
+ }
+ Remove {
+  operation keep
+  channels specular_2
+  name Remove21
+  xpos 291
+  ypos -203
+ }
+push $N5a7b250
+add_layer {specular_1 specular_1.red specular_1.green specular_1.blue}
+ Shuffle {
+  in none
+  out specular_1
+  name specular
+  xpos 164
+  ypos -228
+ }
+ Remove {
+  operation keep
+  channels specular_1
+  name Remove5
+  xpos 164
+  ypos -202
+ }
+push $N5a88490
+add_layer {AO AO.red AO.green AO.blue}
+ Shuffle {
+  in none
+  out {AO.red -AO.green -AO.blue}
+  name AO
+  xpos 54
+  ypos -229
+ }
+ Remove {
+  operation keep
+  channels AO
+  name Remove4
+  xpos 54
+  ypos -203
+ }
+push $N59cf130
+add_layer {indirect_light indirect_light.red indirect_light.green indirect_light.blue}
+ Shuffle {
+  in none
+  out indirect_light
+  name indirect_light
+  xpos -56
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels indirect_light
+  name Remove3
+  xpos -56
+  ypos -202
+ }
+push $N5a97d10
+add_layer {direct_light_3 direct_light_3.red direct_light_3.green direct_light_3.blue}
+ Shuffle {
+  in none
+  out direct_light_3
+  name direct_light_3
+  xpos -163
+  ypos -224
+ }
+ Remove {
+  operation keep
+  channels direct_light_3
+  name Remove24
+  xpos -163
+  ypos -198
+ }
+push $N5b1caf0
+add_layer {direct_light_2 direct_light_2.red direct_light_2.green direct_light_2.blue}
+ Shuffle {
+  in none
+  out direct_light_2
+  name direct_light_2
+  xpos -258
+  ypos -228
+ }
+ Remove {
+  operation keep
+  channels direct_light_2
+  name Remove23
+  xpos -258
+  ypos -202
+ }
+push $N5aa9e30
+add_layer {direct_light_1 direct_light_1.red direct_light_1.green direct_light_1.blue}
+ Shuffle {
+  in none
+  out direct_light_1
+  name direct_light_1
+  xpos -386
+  ypos -228
+ }
+ Remove {
+  operation keep
+  channels direct_light_1
+  name Remove2
+  xpos -386
+  ypos -202
+ }
+push $N59d6b20
+add_layer {diffuse_material_color diffuse_material_color.red diffuse_material_color.green diffuse_material_color.blue}
+ Shuffle {
+  in none
+  out diffuse_material_color
+  name diffuse_material_color
+  xpos -547
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels diffuse_material_color
+  name Remove1
+  xpos -547
+  ypos -202
+ }
+ Dot {
+  name Dot1
+  xpos -513
+  ypos -135
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge1
+  xpos -386
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge22
+  xpos -268
+  ypos -141
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge23
+  xpos -166
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge2
+  xpos -56
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge3
+  xpos 54
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge4
+  xpos 164
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge20
+  xpos 285
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge21
+  xpos 386
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge5
+  xpos 510
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge6
+  xpos 620
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge7
+  xpos 730
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge11
+  xpos 869
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge24
+  xpos 1014
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge8
+  xpos 1214
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge9
+  xpos 1349
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge10
+  xpos 1487
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge12
+  xpos 1664
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge13
+  xpos 1806
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge14
+  xpos 1960
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge15
+  xpos 2094
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge16
+  xpos 2225
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge17
+  xpos 2367
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge18
+  xpos 2521
+  ypos -138
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge19
+  xpos 2655
+  ypos -138
+ }
+ Output {
+  name Output1
+  xpos 2655
+  ypos 187
+ }
+end_group
+Group {
+ name J_RP_Object
+ tile_color 0x55ff7fff
+ selected true
+ xpos 47
+ ypos -13
+ addUserKnob {20 Color_Correction l "Color Correction"}
+ addUserKnob {26 ""}
+ addUserKnob {41 maskChannelInput l object -STARTLINE T mask_color.maskChannelInput}
+ addUserKnob {26 color_tile l Color}
+ addUserKnob {41 gain T Diffuse_Correction_01.gain}
+ addUserKnob {6 gain_color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 gamma_color l gamma R 0.1 2}
+ gamma_color 1
+ addUserKnob {7 saturation_color l saturation R 0 2}
+ saturation_color 1
+ addUserKnob {26 ""}
+ addUserKnob {26 specular_tile l Specular}
+ addUserKnob {41 gain_3 l gain T Specular_1_Correction.gain}
+ addUserKnob {6 specular_gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 specular_gamma l gamma R 0.1 2}
+ specular_gamma 1
+ addUserKnob {26 ""}
+ addUserKnob {26 reflection_tile l Reflection}
+ addUserKnob {41 gain_4 l gain T Reflection_Correction_1.gain}
+ addUserKnob {6 reflection_gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 reflection_gamma l gamma R 0.1 2}
+ reflection_gamma 1
+ addUserKnob {7 reflection_saturation l saturation R 0 2}
+ reflection_saturation 1
+ addUserKnob {26 ""}
+ addUserKnob {26 refraction_tile l Refraction}
+ addUserKnob {41 gain_5 l gain T Refraction_Correction_1.gain}
+ addUserKnob {6 refraction_gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 refraction_gamma l gamma R 0.1 2}
+ refraction_gamma 1
+ addUserKnob {7 refraction_saturation l saturation R 0 2}
+ refraction_saturation 1
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 464
+  ypos -345
+ }
+set N5802c00 [stack 0]
+ Shuffle {
+  in matte_all
+  out alpha
+  name matte_channel
+  xpos 464
+  ypos -261
+ }
+ Unpremult {
+  channels all
+  name Unpremult1
+  xpos 464
+  ypos -208
+ }
+ ColorCorrect {
+  channels diffuse_material_color
+  saturation {{parent.saturation_color}}
+  gamma {{parent.gamma_color}}
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Diffuse_Correction_01
+  xpos 464
+  ypos -51
+ }
+ ColorCorrect {
+  channels specular_1
+  saturation {{parent.specular_saturation}}
+  gamma {{parent.specular_gamma}}
+  gain 0
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Specular_1_Correction
+  xpos 464
+  ypos 18
+ }
+ ColorCorrect {
+  channels specular_2
+  saturation {{parent.specular_saturation}}
+  gamma {{parent.specular_gamma}}
+  gain {{parent.Specular_1_Correction.gain}}
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Specular_2_Correction
+  xpos 464
+  ypos 87
+ }
+ ColorCorrect {
+  channels specular_3
+  saturation {{parent.specular_saturation}}
+  gamma {{parent.specular_gamma}}
+  gain {{parent.Specular_1_Correction.gain}}
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Specular_3_Correction
+  xpos 464
+  ypos 141
+ }
+ ColorCorrect {
+  channels reflection
+  saturation {{parent.reflection_saturation}}
+  gamma {{parent.reflection_gamma}}
+  gain 0
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Reflection_Correction_1
+  xpos 464
+  ypos 208
+ }
+ ColorCorrect {
+  channels refraction
+  saturation {{parent.refraction_saturation}}
+  gamma {{parent.refraction_gamma}}
+  gain 0
+  maskChannelInput {{{mask_color.maskChannelInput}}}
+  name Refraction_Correction_1
+  xpos 464
+  ypos 292
+ }
+ Premult {
+  channels all
+  name Premult2
+  xpos 464
+  ypos 353
+ }
+ Remove {
+  channels rgba
+  name Remove1
+  xpos 464
+  ypos 411
+ }
+ Output {
+  name Output1
+  xpos 464
+  ypos 469
+ }
+push $N5802c00
+ Grade {
+  channels rgba
+  name mask_color
+  xpos 314
+  ypos -345
+ }
+end_group
+Group {
+ name J_RP_Light
+ tile_color 0x9fffff
+ selected true
+ xpos 47
+ ypos 13
+ addUserKnob {20 Color_Correction l "Color Correction"}
+ addUserKnob {6 gain_light_01_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 indirect_tile l Indirect}
+ addUserKnob {41 gain_2 l gain T Indirect_Correction_1.gain}
+ addUserKnob {6 indirect_gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 indirect_gamma l gamma R 0.1 2}
+ indirect_gamma 1
+ addUserKnob {7 indirect_saturation l saturation R 0 2}
+ indirect_saturation 1
+ addUserKnob {26 ""}
+ addUserKnob {26 ao_tile l AO}
+ addUserKnob {7 ao_gain l gain R 0 2}
+ ao_gain 1
+ addUserKnob {7 ao_gamma l gamma R 0.1 2}
+ ao_gamma 1
+ addUserKnob {26 ""}
+ addUserKnob {26 light_01_tile l "Direct Light 1"}
+ addUserKnob {41 gain_1 l gain T Light_1_Correction_1.gain}
+ addUserKnob {7 gamma_light_01 l gamma R 0.1 2}
+ gamma_light_01 1
+ addUserKnob {26 ""}
+ addUserKnob {26 direct2_tile l "DIrect LIght 2"}
+ addUserKnob {41 gain_6 l gain T Light_2_Correction_1.gain}
+ addUserKnob {6 light2_gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 light2gamma l gamma R 0.1 2}
+ light2gamma 1
+ addUserKnob {26 ""}
+ addUserKnob {26 direct3tile l "Direct Light 3"}
+ addUserKnob {41 gain_8 l gain T Light_3_Correction_1.gain}
+ addUserKnob {6 direct3gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 direct3gamma l gamma R 0.1 2}
+ direct3gamma 1
+ addUserKnob {26 ""}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 660
+  ypos -206
+ }
+ Shuffle {
+  in matte_all
+  out mask
+  name matte_channel
+  xpos 660
+  ypos -142
+ }
+ Unpremult {
+  channels all
+  alpha mask.a
+  name Unpremult1
+  xpos 660
+  ypos -103
+ }
+ ColorCorrect {
+  channels direct_light_1
+  gamma {{parent.gamma_light_01}}
+  unpremult {{{Object_Correction_01.Shuffle1.in}}}
+  name Light_1_Correction_1
+  xpos 660
+  ypos -25
+ }
+ ColorCorrect {
+  channels direct_light_2
+  gamma {{parent.light2gamma}}
+  gain 0
+  name Light_2_Correction_1
+  xpos 660
+  ypos 13
+ }
+ ColorCorrect {
+  channels direct_light_3
+  gamma {{parent.direct3gamma}}
+  gain 0
+  name Light_3_Correction_1
+  xpos 660
+  ypos 57
+ }
+ ColorCorrect {
+  channels specular_1
+  gain {{parent.Light_1_Correction_1.gain}}
+  name Specular_1_Correction_1
+  tile_color 0xff3fff
+  xpos 660
+  ypos 116
+ }
+ ColorCorrect {
+  channels specular_2
+  gain {{parent.Light_2_Correction_1.gain}}
+  name Specular_2_Correction_1
+  tile_color 0xff3fff
+  xpos 660
+  ypos 154
+ }
+ ColorCorrect {
+  channels specular_3
+  gain {{parent.Light_3_Correction_1.gain}}
+  name Specular_3_Correction_1
+  tile_color 0xff3fff
+  xpos 660
+  ypos 214
+ }
+ ColorCorrect {
+  channels AO
+  gamma {{parent.ao_gamma}}
+  gain {{parent.ao_gain}}
+  name AO_Correction_1
+  tile_color 0xdfff00ff
+  xpos 660
+  ypos 275
+ }
+ ColorCorrect {
+  channels indirect_light
+  saturation {{parent.indirect_saturation}}
+  gamma {{parent.indirect_gamma}}
+  name Indirect_Correction_1
+  tile_color 0xff5f00ff
+  xpos 660
+  ypos 341
+ }
+ Premult {
+  channels all
+  alpha mask.a
+  name Premult1
+  selected true
+  xpos 660
+  ypos 379
+ }
+ Output {
+  name Output1
+  xpos 660
+  ypos 443
+ }
+end_group
+Group {
+ name J_RP_Combined
+ tile_color 0xe9ff55ff
+ selected true
+ xpos 47
+ ypos 39
+ addUserKnob {20 Color_Correction l "Color Correction"}
+ addUserKnob {4 display l "Display Channel" M {Combined Color "Direct Light" "Indirect Light" "Ambient Oclussion" Specular Reflection Refraction "" "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {6 fog +STARTLINE}
+ addUserKnob {18 fog_color l "fog color"}
+ fog_color {0 0 0}
+ addUserKnob {6 fog_color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 fog_fore l "fog fore"}
+ fog_fore 0.5
+ addUserKnob {7 fog_back l "fog back"}
+ fog_back 0.5
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x59718eff
+  label "Diffuse Color"
+  note_font_size 20
+  xpos 644
+  ypos -160
+  bdwidth 125
+  bdheight 477
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode10
+  tile_color 0x8e8470ff
+  label "Specular 1"
+  note_font_size 20
+  xpos 1702
+  ypos -151
+  bdwidth 375
+  bdheight 429
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode13
+  tile_color 0x6e8e6eff
+  label Reflection
+  note_font_size 20
+  xpos 2127
+  ypos -151
+  bdheight 436
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode14
+  tile_color 0x445d8eff
+  label Refraction
+  note_font_size 20
+  xpos 2299
+  ypos -152
+  bdwidth 103
+  bdheight 438
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode5
+  tile_color 0x8e7e50ff
+  label "LIgth 1"
+  note_font_size 20
+  xpos 844
+  ypos -149
+  bdwidth 372
+  bdheight 420
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode8
+  tile_color 0x57508eff
+  label Indirect
+  note_font_size 20
+  xpos 1495
+  ypos -152
+  bdwidth 107
+  bdheight 440
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode9
+  tile_color 0x969696ff
+  label "Ambient Oclussion"
+  note_font_size 20
+  xpos 1310
+  ypos -150
+  bdwidth 104
+  bdheight 438
+  z_order 1
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 307
+  ypos -336
+ }
+ Dot {
+  name Dot16
+  xpos 341
+  ypos -218
+ }
+set N6f722f0 [stack 0]
+ Dot {
+  name Dot14
+  xpos 67
+  ypos -218
+ }
+ Shuffle {
+  in depth
+  in2 matte_all
+  alpha red2
+  name Shuffle1
+  xpos 33
+  ypos 551
+ }
+ Premult {
+  name Premult2
+  xpos 33
+  ypos 588
+ }
+ EdgeBlur {
+  size 2
+  name EdgeBlur1
+  xpos 33
+  ypos 614
+ }
+ Unpremult {
+  name Unpremult2
+  xpos 33
+  ypos 680
+ }
+ Grade {
+  channels rgba
+  blackpoint {{parent.fog_fore/5}}
+  whitepoint {{-parent.fog_back+1}}
+  black 0.0005
+  name Grade2
+  xpos 33
+  ypos 766
+ }
+push $N6f722f0
+ Shuffle {
+  in matte_all
+  name matte_all
+  xpos 307
+  ypos 465
+ }
+push $N6f722f0
+ Shuffle {
+  in matte_all
+  out alpha
+  name matte_channel
+  xpos 464
+  ypos -222
+ }
+ Roto {
+  output mask
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44800000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup BezierCusped1 512 bezier
+     {{cc
+       {f 8192}
+       {p
+        {}
+        {x44330000 x44007333}
+        {}
+        {}
+        {x44326666 x4407c000}
+        {}
+        {}
+        {x4432999a x440d2666}
+        {}
+        {}
+        {x44358000 x440f8000}
+        {}
+        {}
+        {x4439c000 x4410a666}
+        {}
+        {}
+        {x443e0ccd x440cb333}
+        {}
+        {}
+        {x443f2666 x44072666}
+        {}
+        {}
+        {x443f4ccd x43ffe666}
+        {}
+        {}
+        {x4438cccd x43fd0000}
+        {}}}
+      {cc
+       {f 8192}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {t x4438816d x4407fa4f}
+     {a osw x41200000 osf 0 str 1 spx x44800000 spy x44070000 sb 1 ltn x44b06000 ltm x44b06000 tt x40a00000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 tt 5 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {1024 540}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  lifetime_start 1411
+  lifetime_end 1411
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name Roto1
+  xpos 464
+  ypos -195
+ }
+ Unpremult {
+  channels all
+  alpha mask.a
+  name Unpremult1
+  xpos 464
+  ypos -157
+ }
+ Dot {
+  name Dot17
+  xpos 498
+  ypos -101
+ }
+ Dot {
+  name Dot27
+  xpos 694
+  ypos -101
+ }
+set N7071800 [stack 0]
+ Dot {
+  name Dot7
+  xpos 884
+  ypos -101
+ }
+set N7076270 [stack 0]
+ Dot {
+  name Dot1
+  xpos 1013
+  ypos -101
+ }
+set N707abe0 [stack 0]
+ Dot {
+  name Dot2
+  xpos 1145
+  ypos -101
+ }
+set N707f770 [stack 0]
+ Dot {
+  name Dot8
+  xpos 1355
+  ypos -101
+ }
+set N7084280 [stack 0]
+ Dot {
+  name Dot9
+  xpos 1541
+  ypos -101
+ }
+set N7088d70 [stack 0]
+ Dot {
+  name Dot11
+  xpos 1746
+  ypos -101
+ }
+set N708d810 [stack 0]
+ Dot {
+  name Dot3
+  xpos 1885
+  ypos -101
+ }
+set N7092280 [stack 0]
+ Dot {
+  name Dot4
+  xpos 2017
+  ypos -101
+ }
+set N7096d80 [stack 0]
+ Dot {
+  name Dot26
+  xpos 2172
+  ypos -101
+ }
+set N709b820 [stack 0]
+ Dot {
+  name Dot15
+  xpos 2344
+  ypos -101
+ }
+ Shuffle {
+  in refraction
+  out rgb
+  name reftaction_channel
+  xpos 2310
+  ypos -67
+ }
+set N70a4b60 [stack 0]
+ Dot {
+  name Dot55
+  xpos 2255
+  ypos -63
+ }
+ Dot {
+  name Dot54
+  xpos 2255
+  ypos 567
+ }
+push $N709b820
+ Shuffle {
+  in reflection
+  out rgb
+  name reflect_channel
+  xpos 2138
+  ypos -64
+ }
+set N70bd030 [stack 0]
+ Dot {
+  name Dot52
+  xpos 2102
+  ypos -60
+ }
+ Dot {
+  name Dot51
+  xpos 2102
+  ypos 567
+ }
+push $N7096d80
+ Shuffle {
+  in specular_3
+  out rgb
+  name specular_channel3
+  xpos 1983
+  ypos -38
+ }
+ Dot {
+  name Dot12
+  xpos 2017
+  ypos 173
+ }
+push 0
+push $N7092280
+ Shuffle {
+  in specular_2
+  out rgb
+  name specular_channel2
+  xpos 1851
+  ypos -36
+ }
+ Dot {
+  name Dot13
+  xpos 1885
+  ypos 173
+ }
+push $N708d810
+ Shuffle {
+  in {specular_1.red -specular_1.green -specular_1.blue}
+  out rgb
+  name specular_channel
+  xpos 1712
+  ypos -42
+ }
+ Merge2 {
+  inputs 3+1
+  operation screen
+  name Merge20
+  xpos 1712
+  ypos 169
+ }
+ Dot {
+  name Dot53
+  xpos 1746
+  ypos 309
+ }
+set N711a070 [stack 0]
+ Dot {
+  name Dot42
+  xpos 1746
+  ypos 567
+ }
+push $N7084280
+ Shuffle {
+  in AO
+  green red
+  blue red
+  alpha black
+  out rgb
+  name AO_channel
+  xpos 1321
+  ypos -60
+ }
+set N7123510 [stack 0]
+ Dot {
+  name Dot44
+  xpos 1221
+  ypos -56
+ }
+ Dot {
+  name Dot43
+  xpos 1221
+  ypos 567
+ }
+push $N7088d70
+ Shuffle {
+  in indirect_light
+  alpha white
+  out rgb
+  name indirect_channel
+  xpos 1507
+  ypos -56
+ }
+set N713b8a0 [stack 0]
+ Dot {
+  name Dot48
+  xpos 1469
+  ypos -52
+ }
+ Dot {
+  name Dot47
+  xpos 1469
+  ypos 567
+ }
+push $N707f770
+ Shuffle {
+  in direct_light_3
+  out rgb
+  name direct_channel3
+  xpos 1111
+  ypos -25
+ }
+ Dot {
+  name Dot5
+  xpos 1145
+  ypos 201
+ }
+push 0
+push $N707abe0
+ Shuffle {
+  in direct_light_2
+  out rgb
+  name direct_channel2
+  xpos 979
+  ypos -28
+ }
+ Dot {
+  name Dot6
+  xpos 1013
+  ypos 201
+ }
+push $N7076270
+ Shuffle {
+  in direct_light_1
+  out rgb
+  name direct_channel1
+  xpos 850
+  ypos -22
+ }
+ Merge2 {
+  inputs 3+1
+  operation screen
+  name Merge21
+  xpos 850
+  ypos 197
+ }
+ Dot {
+  name Dot50
+  xpos 884
+  ypos 314
+ }
+set N7198740 [stack 0]
+ Dot {
+  name Dot49
+  xpos 884
+  ypos 567
+ }
+push $N7071800
+ Shuffle {
+  in diffuse_material_color
+  out rgb
+  name color_channel
+  xpos 660
+  ypos -73
+ }
+set N71a1db0 [stack 0]
+ Dot {
+  name Dot46
+  xpos 615
+  ypos -69
+ }
+ Dot {
+  name Dot45
+  xpos 615
+  ypos 567
+ }
+push $N711a070
+push $N70bd030
+push $N70a4b60
+ Dot {
+  name Dot18
+  xpos 2348
+  ypos 510
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge22
+  xpos 2138
+  ypos 506
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge23
+  xpos 1824
+  ypos 501
+ }
+push $N7198740
+push $N713b8a0
+ Dot {
+  name Dot22
+  xpos 1541
+  ypos 314
+ }
+push $N7123510
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge24
+  xpos 1321
+  ypos 310
+ }
+ Dot {
+  name Dot10
+  xpos 1355
+  ypos 429
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge25
+  xpos 937
+  ypos 425
+ }
+push $N71a1db0
+ Merge2 {
+  inputs 2
+  operation multiply
+  also_merge all
+  name Merge28
+  xpos 660
+  ypos 425
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  also_merge all
+  name Merge29
+  xpos 660
+  ypos 501
+ }
+ Dot {
+  name Dot56
+  xpos 694
+  ypos 567
+ }
+ Switch {
+  inputs 8
+  which {{display}}
+  name Switch1
+  xpos 435
+  ypos 563
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy5
+  xpos 307
+  ypos 557
+ }
+ Clamp {
+  name Clamp1
+  xpos 307
+  ypos 657
+ }
+set N723f9e0 [stack 0]
+ Grade {
+  inputs 1+1
+  black {{J_RP_Combined.fog_color} {J_RP_Combined.fog_color} {J_RP_Combined.fog_color} {J_RP_Combined.fog_color}}
+  maskChannelMask rgba.red
+  name fog_color
+  xpos 179
+  ypos 766
+ }
+push $N723f9e0
+ Switch {
+  inputs 2
+  which {{fog}}
+  name Switch2
+  xpos 307
+  ypos 766
+ }
+ Premult {
+  name Premult1
+  xpos 307
+  ypos 792
+ }
+ Remove {
+  operation keep
+  channels rgba
+  name Remove1
+  xpos 307
+  ypos 1143
+ }
+ Output {
+  name Output1
+  xpos 307
+  ypos 1193
+ }
+end_group

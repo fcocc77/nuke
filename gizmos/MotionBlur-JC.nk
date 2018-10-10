@@ -1,0 +1,159 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push $cut_paste_input
+Group {
+ name J_MotionBlur
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos 71
+ ypos -16
+ mapsize {0.15 0.15}
+ addUserKnob {20 User}
+ addUserKnob {41 useGPUIfAvailable l "Use GPU if available" T VectorGenerator1.useGPUIfAvailable}
+ addUserKnob {26 ""}
+ addUserKnob {26 VectorGenerator l "" +STARTLINE T VectorGenerator}
+ addUserKnob {41 vectorDetail l "Vector Detail" T VectorGenerator1.vectorDetail}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {41 Blur T Blur2.size}
+ addUserKnob {6 displayvector l "Display Vector" +STARTLINE}
+ addUserKnob {6 VectorFromAlpha +STARTLINE}
+ VectorFromAlpha true
+ addUserKnob {26 ""}
+ addUserKnob {26 VectorBlur l "" +STARTLINE T VectorBlur}
+ addUserKnob {41 Amount T VectorBlur1.scale}
+ addUserKnob {41 Offset T VectorBlur1.offset}
+ addUserKnob {7 AdjBBox R 0 1000}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 507
+  ypos -182
+ }
+set N21d28870 [stack 0]
+ AdjBBox {
+  numpixels {{parent.AdjBBox}}
+  name AdjBBox1
+  selected true
+  xpos 507
+  ypos 350
+ }
+ Dot {
+  name Dot2
+  xpos 541
+  ypos 502
+ }
+push $N21d28870
+ Crop {
+  box {0 0 {Input1.width} {Input1.height}}
+  crop false
+  name Crop1
+  xpos 262
+  ypos -182
+ }
+ Dot {
+  name Dot1
+  xpos 296
+  ypos -27
+ }
+set N21d33970 [stack 0]
+ Shuffle {
+  in alpha
+  name Shuffle2
+  xpos 92
+  ypos -130
+ }
+push $N21d33970
+ Switch {
+  inputs 2
+  which {{VectorFromAlpha}}
+  name Switch2
+  xpos 92
+  ypos -30
+ }
+ VectorGenerator {
+  vectorSourceFlag 5
+  warpSourceFlag 5
+  computedVectorFlag 5
+  maskFlag 5
+  name VectorGenerator1
+  xpos 92
+  ypos 13
+ }
+ Blur {
+  channels motion
+  size 50
+  name Blur2
+  xpos 92
+  ypos 57
+ }
+ FrameRange {
+  first_frame 1
+  last_frame {{"Input1.last_frame -1" i}}
+  time ""
+  name FrameRange1
+  xpos 92
+  ypos 129
+ }
+ Retime {
+  input.last {{parent.FrameRange1.knob.last_frame}}
+  input.last_lock true
+  output.last 50
+  shutter 0
+  time ""
+  name Retime2
+  xpos 92
+  ypos 185
+ }
+set N21d77720 [stack 0]
+ Shuffle {
+  in motion
+  name Shuffle1
+  xpos 92
+  ypos 433
+ }
+push $N21d77720
+push $N21d33970
+ Copy {
+  inputs 2
+  channels motion
+  name Copy1
+  xpos 262
+  ypos 176
+ }
+ VectorBlur {
+  channels rgba
+  uv motion
+  scale 0.5
+  invert_mask true
+  name VectorBlur1
+  xpos 262
+  ypos 307
+ }
+ Switch {
+  inputs 2
+  which {{displayvector}}
+  name Switch1
+  xpos 262
+  ypos 433
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 261
+  ypos 499
+ }
+ Remove {
+  channels motion
+  name Remove1
+  xpos 262
+  ypos 520
+ }
+ Output {
+  name Output1
+  xpos 262
+  ypos 563
+ }
+end_group

@@ -1,0 +1,236 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Group {
+ name J_Glow
+ tile_color 0xff5f00ff
+ selected true
+ xpos -2122
+ ypos -771
+ addUserKnob {20 User}
+ addUserKnob {6 glow_alpha l "alpha glow" +STARTLINE}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 size R 0 100}
+ size 10
+ addUserKnob {7 torelance l tolerance}
+ torelance 0.5
+ addUserKnob {7 hardness}
+ hardness 0.5
+ addUserKnob {26 ""}
+ addUserKnob {41 white l gain T Grade1.white}
+ addUserKnob {7 offset l gamma R 0 2}
+ offset 1.2
+ addUserKnob {41 saturation T Saturation1.saturation}
+ addUserKnob {26 ""}
+ addUserKnob {41 mix l Mix T Dissolve1.which}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x49415eff
+  label "exponential\n\n"
+  note_font_size 42
+  xpos 421
+  ypos -187
+  bdwidth 575
+  bdheight 681
+ }
+ Input {
+  inputs 0
+  name mask
+  xpos 852
+  ypos -284
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 171
+  ypos -266
+ }
+set N3127cff0 [stack 0]
+ Dot {
+  name Dot4
+  xpos 205
+  ypos -114
+ }
+set N6ae3d900 [stack 0]
+ Dot {
+  name Dot3
+  xpos 317
+  ypos -114
+ }
+set N68da5280 [stack 0]
+ Keyer {
+  operation "luminance key"
+  range {{-parent.torelance+1} {-parent.hardness+1} 1 1}
+  name Keyer1
+  xpos 362
+  ypos -124
+ }
+ Premult {
+  name Premult1
+  xpos 479
+  ypos -118
+ }
+push $N3127cff0
+ Shuffle {
+  in none
+  alpha black
+  name Shuffle2
+  xpos 590
+  ypos -266
+ }
+ Merge2 {
+  inputs 2+1
+  name Merge2
+  selected true
+  xpos 589
+  ypos -118
+ }
+ Dot {
+  name Dot2
+  xpos 925
+  ypos -121
+ }
+set N68dacff0 [stack 0]
+ Blur {
+  channels rgb
+  size {{parent.size}}
+  name Blur10
+  xpos 429
+  ypos 83
+ }
+push $N68dacff0
+ Blur {
+  channels rgb
+  size {{parent.size*2}}
+  name Blur_x2
+  xpos 541
+  ypos 86
+ }
+push $N68dacff0
+ Blur {
+  channels rgb
+  size {{parent.size*4}}
+  name Blur_x4
+  xpos 666
+  ypos 68
+ }
+push 0
+push $N68dacff0
+ Blur {
+  channels rgb
+  size {{parent.size*8}}
+  name Blur_x8
+  xpos 777
+  ypos 70
+ }
+push $N68dacff0
+ Blur {
+  channels rgb
+  size {{parent.size*16}}
+  name Blur_x16
+  xpos 891
+  ypos 66
+ }
+ Merge2 {
+  inputs 5+1
+  operation screen
+  name Merge5
+  xpos 666
+  ypos 268
+ }
+ Grade {
+  gamma {{parent.offset}}
+  name Grade1
+  xpos 666
+  ypos 299
+ }
+ Saturation {
+  saturation 2
+  name Saturation1
+  xpos 666
+  ypos 337
+ }
+set N6fff1360 [stack 0]
+ Keyer {
+  operation "luminance key"
+  name Keyer2
+  xpos 666
+  ypos 363
+ }
+ Dot {
+  name Dot6
+  xpos 700
+  ypos 397
+ }
+push $N68da5280
+ Dot {
+  name Dot1
+  xpos 317
+  ypos 259
+ }
+set N8d9d8900 [stack 0]
+ Dot {
+  name Dot7
+  xpos 520
+  ypos 259
+ }
+ Shuffle {
+  name Shuffle1
+  xpos 486
+  ypos 367
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 486
+  ypos 393
+ }
+push $N8d9d8900
+push $N6fff1360
+ Merge2 {
+  inputs 2
+  operation screen
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge8
+  xpos 283
+  ypos 337
+ }
+set N83d3bd20 [stack 0]
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 376
+  ypos 387
+ }
+push $N83d3bd20
+ Switch {
+  inputs 2
+  which {{glow_alpha}}
+  name Switch1
+  xpos 283
+  ypos 393
+ }
+push $N6ae3d900
+ Dot {
+  name Dot5
+  xpos 205
+  ypos 531
+ }
+ Dissolve {
+  inputs 2
+  which 1
+  name Dissolve1
+  xpos 283
+  ypos 521
+ }
+ Output {
+  name Output1
+  xpos 283
+  ypos 611
+ }
+end_group

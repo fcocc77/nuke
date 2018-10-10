@@ -1,0 +1,936 @@
+set cut_paste_input [stack 0]
+version 9.0 v5
+BackdropNode {
+inputs 0
+name BackdropNode1
+tile_color 0x5c678eff
+label "Direct Light"
+note_font_size 25
+selected true
+xpos -8289
+ypos -473
+bdwidth 432
+bdheight 553
+}
+BackdropNode {
+inputs 0
+name BackdropNode2
+tile_color 0x756b53ff
+label Specular
+note_font_size 25
+selected true
+xpos -7444
+ypos -473
+bdwidth 444
+bdheight 559
+}
+BackdropNode {
+inputs 0
+name BackdropNode3
+tile_color 0x59718eff
+label "Diffuse Color"
+note_font_size 20
+selected true
+xpos -8457
+ypos -426
+bdwidth 125
+bdheight 477
+}
+BackdropNode {
+inputs 0
+name BackdropNode7
+tile_color 0x638570ff
+label "Indirect Light"
+note_font_size 25
+selected true
+xpos -7825
+ypos -473
+bdwidth 356
+bdheight 557
+}
+BackdropNode {
+inputs 0
+name BackdropNode10
+tile_color 0x8e8470ff
+label "Specular 1"
+note_font_size 20
+selected true
+xpos -7399
+ypos -417
+bdwidth 106
+bdheight 434
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode11
+tile_color 0x8e8470ff
+label "Specular 2"
+note_font_size 20
+selected true
+xpos -7266
+ypos -416
+bdwidth 107
+bdheight 433
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode12
+tile_color 0x8e8470ff
+label "Specular 3"
+note_font_size 20
+selected true
+xpos -7132
+ypos -416
+bdwidth 104
+bdheight 434
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode13
+tile_color 0x6e8e6eff
+label Reflection
+note_font_size 20
+selected true
+xpos -6974
+ypos -422
+bdheight 436
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode14
+tile_color 0x445d8eff
+label Refraction
+note_font_size 20
+selected true
+xpos -6847
+ypos -423
+bdwidth 103
+bdheight 438
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode4
+tile_color 0x8e7e50ff
+label "LIgth 2"
+note_font_size 20
+selected true
+xpos -8133
+ypos -418
+bdwidth 103
+bdheight 439
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode5
+tile_color 0x8e7e50ff
+label "LIgth 1"
+note_font_size 20
+selected true
+xpos -8257
+ypos -415
+bdwidth 101
+bdheight 429
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode6
+tile_color 0x8e7e50ff
+label "LIgth 3"
+note_font_size 20
+selected true
+xpos -7995
+ypos -417
+bdwidth 101
+bdheight 446
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode8
+tile_color 0x57508eff
+label Indirect
+note_font_size 20
+selected true
+xpos -7606
+ypos -418
+bdwidth 107
+bdheight 440
+z_order 1
+}
+BackdropNode {
+inputs 0
+name BackdropNode9
+tile_color 0x969696ff
+label "Ambient Oclussion"
+note_font_size 20
+selected true
+xpos -7791
+ypos -416
+bdwidth 104
+bdheight 438
+z_order 1
+}
+push $cut_paste_input
+Dot {
+name Dot16
+selected true
+xpos -8631
+ypos -560
+}
+Unpremult {
+channels all
+name Unpremult1
+selected true
+xpos -8665
+ypos -449
+}
+Dot {
+name Dot17
+selected true
+xpos -8631
+ypos -370
+}
+set Nbbd0c800 [stack 0]
+add_layer {MATTE_Bodega_Matte1_camera1 MATTE_Bodega_Matte1_camera1.red MATTE_Bodega_Matte1_camera1.green MATTE_Bodega_Matte1_camera1.blue}
+Shuffle {
+in MATTE_Bodega_Matte1_camera1
+name matte_channel
+selected true
+xpos -8665
+ypos 182
+}
+push $Nbbd0c800
+Dot {
+name Dot27
+selected true
+xpos -8407
+ypos -370
+}
+set N8138b740 [stack 0]
+Dot {
+name Dot7
+selected true
+xpos -8217
+ypos -370
+}
+set Ne5200310 [stack 0]
+Dot {
+name Dot12
+selected true
+xpos -8088
+ypos -370
+}
+set N39aa9f90 [stack 0]
+Dot {
+name Dot19
+selected true
+xpos -7951
+ypos -370
+}
+set N1a2fa4d0 [stack 0]
+Dot {
+name Dot8
+selected true
+xpos -7746
+ypos -370
+}
+set N6da2d6c0 [stack 0]
+Dot {
+name Dot9
+selected true
+xpos -7560
+ypos -370
+}
+set Naf9378b0 [stack 0]
+Dot {
+name Dot11
+selected true
+xpos -7355
+ypos -370
+}
+set Nbf04e970 [stack 0]
+Dot {
+name Dot14
+selected true
+xpos -7222
+ypos -370
+}
+set Ne4582f60 [stack 0]
+Dot {
+name Dot23
+selected true
+xpos -7083
+ypos -370
+}
+set N1b926260 [stack 0]
+Shuffle {
+in none
+name specular_channel1
+selected true
+xpos -7117
+ypos -333
+disable true
+}
+Grade {
+name General_Specular_3
+tile_color 0xb4ffaaff
+selected true
+xpos -7117
+ypos -307
+disable true
+}
+Dot {
+name Dot24
+selected true
+xpos -7083
+ypos 42
+}
+push 0
+push $Ne4582f60
+Shuffle {
+in none
+name specular_channel2
+selected true
+xpos -7256
+ypos -332
+disable true
+}
+Grade {
+name General_Specular_2
+tile_color 0xb4ffaaff
+selected true
+xpos -7256
+ypos -306
+disable true
+}
+Dot {
+name Dot25
+selected true
+xpos -7222
+ypos 42
+}
+push $Nbf04e970
+add_layer {SPEC_specular_camera1 SPEC_specular_camera1.red SPEC_specular_camera1.green SPEC_specular_camera1.blue}
+Shuffle {
+in SPEC_specular_camera1
+name specular_channel
+selected true
+xpos -7389
+ypos -331
+}
+Grade {
+name General_Specular_1
+tile_color 0xb4ffaaff
+selected true
+xpos -7389
+ypos -305
+}
+Merge2 {
+inputs 3+1
+operation screen
+name Merge20
+selected true
+xpos -7389
+ypos 38
+}
+push $N1b926260
+Dot {
+name Dot26
+selected true
+xpos -6929
+ypos -370
+}
+set N1c2704d0 [stack 0]
+add_layer {REFL_reflection_camera1 REFL_reflection_camera1.red REFL_reflection_camera1.green REFL_reflection_camera1.blue}
+Shuffle {
+in REFL_reflection_camera1
+name reflect_channel
+selected true
+xpos -6963
+ypos -335
+}
+Grade {
+name General_Reflection
+tile_color 0xb4ffaaff
+selected true
+xpos -6963
+ypos -309
+}
+push $N1c2704d0
+Dot {
+name Dot15
+selected true
+xpos -6802
+ypos -370
+}
+Shuffle {
+in none
+name reftaction_channel
+selected true
+xpos -6836
+ypos -336
+}
+Grade {
+name General_Refraction
+tile_color 0xb4ffaaff
+selected true
+xpos -6836
+ypos -310
+}
+Dot {
+name Dot18
+selected true
+xpos -6802
+ypos 239
+}
+Merge2 {
+inputs 2
+operation screen
+name Merge22
+selected true
+xpos -6963
+ypos 235
+}
+Merge2 {
+inputs 2
+name Merge23
+selected true
+xpos -7389
+ypos 235
+}
+push $N1a2fa4d0
+add_layer {direct direct.red direct.green direct.blue direct.alpha}
+Shuffle {
+in direct
+name direct_channel1
+selected true
+xpos -7985
+ypos -326
+disable true
+}
+Grade {
+name General_LIgth_3
+tile_color 0xb4ffaaff
+selected true
+xpos -7985
+ypos -300
+disable true
+}
+Dot {
+name Dot21
+selected true
+xpos -7951
+ypos 46
+}
+push 0
+push $N39aa9f90
+Shuffle {
+in direct
+name direct_channel2
+selected true
+xpos -8122
+ypos -330
+disable true
+}
+Grade {
+name General_LIgth_2
+tile_color 0xb4ffaaff
+selected true
+xpos -8122
+ypos -304
+disable true
+}
+Dot {
+name Dot6
+selected true
+xpos -8088
+ypos 46
+}
+push $Ne5200310
+add_layer {DIRIRR_directIrrad2443557026 DIRIRR_directIrrad2443557026.red DIRIRR_directIrrad2443557026.green DIRIRR_directIrrad2443557026.blue}
+Shuffle {
+in DIRIRR_directIrrad2443557026
+name direct_channel
+selected true
+xpos -8251
+ypos -334
+}
+Grade {
+name General_LIgth_1
+tile_color 0xb4ffaaff
+selected true
+xpos -8251
+ypos -308
+}
+Merge2 {
+inputs 3+1
+operation screen
+name Merge21
+selected true
+xpos -8251
+ypos 42
+}
+push $Naf9378b0
+add_layer {INDIRR_indirect_camera1 INDIRR_indirect_camera1.red INDIRR_indirect_camera1.green INDIRR_indirect_camera1.blue}
+Shuffle {
+in INDIRR_indirect_camera1
+alpha white
+name indirect_channel
+selected true
+xpos -7594
+ypos -322
+}
+Grade {
+name General_Indirect
+tile_color 0xb4ffaaff
+selected true
+xpos -7594
+ypos -296
+}
+Dot {
+name Dot22
+selected true
+xpos -7560
+ypos 48
+}
+push $N6da2d6c0
+add_layer {AO_AO1_camera1 AO_AO1_camera1.red AO_AO1_camera1.green AO_AO1_camera1.blue}
+Shuffle {
+in AO_AO1_camera1
+alpha white
+name AO_channel
+selected true
+xpos -7780
+ypos -326
+}
+Grade {
+name General_Ambien_Oclussion
+tile_color 0xb4ffaaff
+selected true
+xpos -7780
+ypos -300
+}
+Merge2 {
+inputs 2
+operation multiply
+name Merge24
+selected true
+xpos -7780
+ypos 44
+}
+Dot {
+name Dot10
+selected true
+xpos -7746
+ypos 163
+}
+Merge2 {
+inputs 2
+operation screen
+name Merge25
+selected true
+xpos -8251
+ypos 159
+}
+push $N8138b740
+add_layer {DIFRAW_diffuseMate2904795521 DIFRAW_diffuseMate2904795521.red DIFRAW_diffuseMate2904795521.green DIFRAW_diffuseMate2904795521.blue}
+Shuffle {
+in DIFRAW_diffuseMate2904795521
+name color_channel
+selected true
+xpos -8441
+ypos -328
+}
+Grade {
+name General_Material_Color
+tile_color 0xb4ffaaff
+selected true
+xpos -8441
+ypos -302
+}
+Group {
+name color_mask_01
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -260
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_1
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -234
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_2
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -208
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_3
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -182
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_4
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -156
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_5
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -130
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_6
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -104
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_7
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -78
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_8
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -52
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_9
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+ypos -26
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Group {
+name color_mask_10
+tile_color 0xffbf00ff
+selected true
+xpos -8441
+disable true
+addUserKnob {20 User}
+addUserKnob {41 maskChannelMask l "" -STARTLINE T ColorCorrect1.maskChannelMask}
+addUserKnob {41 gain T ColorCorrect1.gain}
+addUserKnob {41 gamma T ColorCorrect1.gamma}
+addUserKnob {41 saturation T ColorCorrect1.saturation}
+}
+Input {
+inputs 0
+name Input1
+xpos -916
+ypos -276
+}
+ColorCorrect {
+maskChannelMask none
+name ColorCorrect1
+xpos -916
+ypos -250
+}
+Output {
+name Output1
+xpos -916
+ypos -224
+}
+end_group
+Merge2 {
+inputs 2
+operation multiply
+name Merge28
+selected true
+xpos -8441
+ypos 159
+}
+Merge2 {
+inputs 2
+operation screen
+name Merge29
+selected true
+xpos -8441
+ypos 235
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy5
+selected true
+xpos -8665
+ypos 229
+}
+Remove {
+operation keep
+channels rgba
+name Remove1
+selected true
+xpos -8665
+ypos 331
+}
+Clamp {
+name Clamp1
+selected true
+xpos -8665
+ypos 357
+}

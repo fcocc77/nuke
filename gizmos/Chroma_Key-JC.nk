@@ -1,0 +1,567 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+ name J_Chroma_Key
+ tile_color 0x1fff00ff
+ selected true
+ xpos 1664
+ ypos -433
+ addUserKnob {20 User}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {4 type_key l "Screen type" M {"Green Screen" "Blue Screen" "" "" "" "" "" "" "" "" ""}}
+ addUserKnob {4 KeyType M {IBK Difference "" ""}}
+ addUserKnob {4 display_key l Display M {Result Color Status "" "" "" "" ""}}
+ addUserKnob {41 size l PreBlur T PreBlur.size}
+ addUserKnob {6 supresion l GreenRemove +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {7 Key l "Color balance"}
+ Key 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 erodeout l "Erode out" R 0 100}
+ addUserKnob {41 size_1 l "Erode in" T EdgeBlur13.size}
+ addUserKnob {7 patch_black l "Patch black"}
+ addUserKnob {26 ""}
+ addUserKnob {7 gain l "Black correction"}
+ addUserKnob {7 remove_withe l "White correction"}
+ addUserKnob {26 ""}
+ addUserKnob {20 inside l Patch n 1}
+ inside 0
+ addUserKnob {6 activate l Negro +STARTLINE}
+ addUserKnob {6 blanco l Blanco +STARTLINE}
+ addUserKnob {6 displaypatch l Display +STARTLINE}
+ addUserKnob {7 erode l Erode}
+ addUserKnob {4 erode_type l "Erode type" M {blur box}}
+ addUserKnob {7 erodesoft l "Erode softness"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x8e8e3800
+  label Status
+  note_font_size 42
+  xpos 1622
+  ypos 1226
+  bdwidth 248
+  bdheight 257
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 836
+  ypos -20
+ }
+set N3cf16d30 [stack 0]
+ Blur {
+  name PreBlur
+  xpos 842
+  ypos 27
+ }
+ Dot {
+  name Dot35
+  xpos 870
+  ypos 72
+ }
+set N3cf1c490 [stack 0]
+ Dot {
+  name Dot2
+  xpos 1093
+  ypos 72
+ }
+set N3cf1e420 [stack 0]
+ Keyer {
+  operation bluescreen
+  range {{(parent.Key/2.5)+0.6 x1267 0.755} {range.A} 1 1}
+  name Keyer1
+  tile_color 0xff00bfff
+  xpos 1221
+  ypos 132
+ }
+push $N3cf1e420
+ Keyer {
+  range {{(parent.Key/2.5)+0.6 x1267 0.755} {range.A} 1 1}
+  name Keyer4
+  tile_color 0xff00bfff
+  xpos 1059
+  ypos 152
+ }
+ Switch {
+  inputs 2
+  which {{type_key}}
+  name Switch1
+  xpos 1059
+  ypos 204
+ }
+set N3cf28900 [stack 0]
+ Dot {
+  name Dot9
+  xpos 972
+  ypos 207
+ }
+ Dot {
+  name Dot11
+  xpos 971
+  ypos 786
+ }
+set N3cf2da90 [stack 0]
+ Invert {
+  name Invert1
+  xpos 1269
+  ypos 783
+ }
+set N3cf2fb30 [stack 0]
+ Dilate {
+  size {{-parent.erode*100}}
+  name Dilate3
+  xpos 1167
+  ypos 876
+ }
+push $N3cf2fb30
+ Erode {
+  size {{parent.erode*100}}
+  name Erode2
+  xpos 1276
+  ypos 867
+ }
+ Switch {
+  inputs 2
+  which {{erode_type}}
+  name Switch5
+  xpos 1252
+  ypos 945
+ }
+ Blur {
+  size {{parent.erodesoft*100}}
+  name Blur2
+  xpos 1264
+  ypos 1178
+ }
+set N3cf3fde0 [stack 0]
+push $N3cf2da90
+ Dilate {
+  size {{-parent.erode*100}}
+  name Dilate2
+  xpos 928
+  ypos 858
+ }
+push $N3cf2da90
+ Erode {
+  size {{parent.erode*100}}
+  name Erode1
+  xpos 1037
+  ypos 849
+ }
+ Switch {
+  inputs 2
+  which {{erode_type}}
+  name Switch4
+  xpos 998
+  ypos 930
+ }
+ Blur {
+  size {{parent.erodesoft*100}}
+  name Blur1
+  xpos 998
+  ypos 968
+ }
+set N3cf50470 [stack 0]
+ Dot {
+  name Dot10
+  xpos 1032
+  ypos 1030
+ }
+push $N3cf1c490
+ Dot {
+  name Dot6
+  xpos 875
+  ypos 406
+ }
+set N3cf56e90 [stack 0]
+push $N3cf56e90
+ Dot {
+  name Dot3
+  xpos 1032
+  ypos 645
+ }
+push $N3cf28900
+ Invert {
+  channels alpha
+  name Invert4
+  xpos 1059
+  ypos 260
+ }
+ Dilate {
+  channels alpha
+  size {{-parent.erodeout}}
+  name Dilate1
+  xpos 1059
+  ypos 308
+ }
+ Premult {
+  name Premult13
+  xpos 1059
+  ypos 369
+ }
+set N3cf63b00 [stack 0]
+ EdgeBlur {
+  size 0
+  edge_mult 20
+  name EdgeBlur13
+  xpos 1059
+  ypos 400
+ }
+add_layer {UnpreMult UnpreMult.pass}
+ Shuffle {
+  in alpha
+  out UnpreMult
+  name Shuffle2
+  xpos 1053
+  ypos 439
+ }
+ Unpremult {
+  channels rgba
+  alpha UnpreMult.pass
+  name Unpremult4
+  xpos 1059
+  ypos 472
+ }
+ FilterErode {
+  size 10
+  name FilterErode6
+  xpos 1059
+  ypos 511
+ }
+ Premult {
+  name Premult14
+  xpos 1059
+  ypos 570
+ }
+push $N3cf63b00
+ EdgeBlur {
+  size {{parent.patch_black*300}}
+  edge_mult 20
+  name EdgeBlur14
+  xpos 1411
+  ypos 364
+ }
+ Unpremult {
+  name Unpremult5
+  xpos 1411
+  ypos 449
+ }
+ Shuffle {
+  alpha white
+  name Shuffle1
+  xpos 1411
+  ypos 473
+ }
+ Merge2 {
+  inputs 2
+  name Merge15
+  xpos 1411
+  ypos 570
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 1411
+  ypos 642
+ }
+ Dot {
+  name Dot1
+  xpos 1445
+  ypos 689
+ }
+set N3cf92930 [stack 0]
+ Dot {
+  name Dot7
+  xpos 765
+  ypos 657
+ }
+set N3cf948c0 [stack 0]
+ Difference {
+  inputs 2
+  gain 100
+  name Difference1
+  xpos 606
+  ypos 771
+ }
+push $N3cf948c0
+push $N3cf56e90
+push $N3cf56e90
+ IBK {
+  inputs 3
+  name IBK1_Blue
+  note_font_color 0xff
+  xpos 841
+  ypos 744
+ }
+push $N3cf948c0
+push $N3cf56e90
+push $N3cf56e90
+ IBK {
+  inputs 3
+  screen_type green
+  name IBK3_Green
+  note_font_color 0xff
+  xpos 741
+  ypos 751
+ }
+ Switch {
+  inputs 2
+  which {{type_key}}
+  name Switch3
+  xpos 781
+  ypos 816
+ }
+ Switch {
+  inputs 2
+  which {{KeyType}}
+  name Switch10
+  selected true
+  xpos 777
+  ypos 867
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.gain/2}}
+  whitepoint {{(-parent.remove_withe/2)+1}}
+  name Grade1
+  xpos 781
+  ypos 919
+ }
+set N3cfa46c0 [stack 0]
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 891
+  ypos 1027
+ }
+push $N3cfa46c0
+ Switch {
+  inputs 2
+  which {{blanco}}
+  name Switch8
+  xpos 781
+  ypos 1027
+ }
+ Dot {
+  name Dot12
+  xpos 815
+  ypos 1132
+ }
+set N3cfb2110 [stack 0]
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge2
+  xpos 944
+  ypos 1183
+ }
+push $N3cfb2110
+ Switch {
+  inputs 2
+  which {{activate}}
+  name Switch6
+  xpos 781
+  ypos 1183
+ }
+ Dot {
+  name Dot14
+  xpos 815
+  ypos 1269
+ }
+ Clamp {
+  name Clamp1
+  xpos 781
+  ypos 1310
+ }
+set N3cfbea20 [stack 0]
+ Dot {
+  name Dot13
+  xpos 1004
+  ypos 1318
+ }
+ Shuffle {
+  in alpha
+  name Shuffle4
+  xpos 970
+  ypos 1549
+ }
+set N3cfc57e0 [stack 0]
+ Dot {
+  name Dot15
+  xpos 1004
+  ypos 1623
+ }
+push $N3cf50470
+push $N3cf3fde0
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 1142
+  ypos 1308
+ }
+ Invert {
+  name Invert2
+  xpos 1132
+  ypos 1378
+ }
+ Shuffle {
+  in alpha
+  red black
+  green black
+  blue red
+  alpha red
+  name Shuffle3
+  xpos 1132
+  ypos 1456
+ }
+push $N3cfc57e0
+ Merge2 {
+  inputs 2
+  operation difference
+  mix 0.73
+  name Merge3
+  xpos 1132
+  ypos 1549
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 1132
+  ypos 1615
+ }
+push $N3cfbea20
+push $N3cf16d30
+ Dot {
+  name Dot5
+  xpos 556
+  ypos -17
+ }
+ Dot {
+  name Dot20
+  xpos 556
+  ypos 1175
+ }
+set N3cfe72e0 [stack 0]
+ HueCorrect {
+  hue {sat {curve 1 1 1 0.7427860498 1 1 1}
+    lum {}
+    red {}
+    green {}
+    blue {}
+    r_sup {}
+    g_sup {curve 1 1 0.2995026112 0.1736320257 1 1 1}
+    b_sup {}
+    sat_thrsh {}}
+  name HueCorrect1
+  xpos 471
+  ypos 1229
+ }
+push $N3cfe72e0
+ Switch {
+  inputs 2
+  which {{supresion}}
+  name Switch9
+  xpos 527
+  ypos 1286
+ }
+ Dot {
+  name Dot8
+  xpos 556
+  ypos 1377
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 782
+  ypos 1369
+ }
+ Dot {
+  name Dot4
+  xpos 816
+  ypos 1418
+ }
+ Dot {
+  name Dot17
+  xpos 1301
+  ypos 1418
+ }
+set N43f007a0 [stack 0]
+ Dot {
+  name Dot18
+  xpos 1301
+  ypos 1262
+ }
+ Dot {
+  name Dot16
+  xpos 1666
+  ypos 1262
+ }
+ Shuffle {
+  in alpha
+  name Shuffle5
+  xpos 1632
+  ypos 1311
+ }
+set N43f06870 [stack 0]
+ Gamma {
+  channels rgba
+  value 0.001
+  name Gamma2
+  xpos 1632
+  ypos 1380
+ }
+push $N43f06870
+ Gamma {
+  value 3.95
+  name Gamma1
+  xpos 1780
+  ypos 1306
+ }
+ Merge2 {
+  inputs 2
+  operation average
+  name Merge5
+  xpos 1780
+  ypos 1380
+ }
+ Dot {
+  name Dot19
+  xpos 1814
+  ypos 1418
+ }
+push $N3cf92930
+push $N43f007a0
+ Switch {
+  inputs 3
+  which {{display_key}}
+  name Switch2
+  xpos 1411
+  ypos 1415
+ }
+ Switch {
+  inputs 2
+  which {{displaypatch}}
+  name Switch7
+  xpos 1411
+  ypos 1620
+ }
+ Output {
+  name Output1
+  xpos 1411
+  ypos 1692
+ }
+push $N3cf948c0
+ Viewer {
+  input_process false
+  name Viewer1
+  xpos 357
+  ypos 1519
+ }
+end_group

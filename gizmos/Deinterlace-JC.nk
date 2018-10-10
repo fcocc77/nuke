@@ -1,0 +1,271 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push $cut_paste_input
+Group {
+name J_Deinterlace
+tile_color 0xff5f00ff
+selected true
+xpos 2100
+ypos -516
+addUserKnob {20 User}
+addUserKnob {4 field l FieldSelect M {Even Odd}}
+addUserKnob {6 firstframeonly l "FristFrame Only" +STARTLINE}
+addUserKnob {6 blend l BlendField +STARTLINE}
+}
+Input {
+inputs 0
+name Input1
+xpos 323
+ypos -78
+}
+set Ne000c230 [stack 0]
+TimeClip {
+time ""
+first {{"Input1.first_frame +1"}}
+last {{Input1.last_frame}}
+origlast 4243
+origset true
+name TimeClip1
+xpos 102
+ypos 135
+}
+push $Ne000c230
+Dot {
+name Dot10
+xpos 732
+ypos -86
+}
+set N277847a0 [stack 0]
+Dot {
+name Dot1
+xpos 914
+ypos -2
+}
+set N3a075330 [stack 0]
+Group {
+name J_Interlaced
+xpos 807
+ypos 72
+addUserKnob {20 User}
+addUserKnob {41 field l Field T FieldSelect1.field}
+addUserKnob {41 which l Field_Switch T Switch1.which}
+}
+Input {
+inputs 0
+name Input1
+xpos 302
+ypos -46
+}
+set N27371060 [stack 0]
+FieldSelect {
+name FieldSelect1
+xpos 462
+ypos -46
+}
+Reformat {
+format "1280 1080 0 0 1280 1080 1.5 "
+resize distort
+filter Impulse
+name Reformat1
+xpos 462
+ypos -22
+}
+push $N27371060
+Switch {
+inputs 2
+which 1
+name Switch1
+xpos 462
+ypos 42
+}
+Output {
+name Output1
+xpos 462
+ypos 78
+}
+end_group
+Transform {
+translate {0 -1}
+center {640 540}
+filter Impulse
+name Transform2
+xpos 807
+ypos 147
+}
+push $N3a075330
+Group {
+name J_Interlaced1
+xpos 954
+ypos 78
+addUserKnob {20 User}
+addUserKnob {41 field l Field T FieldSelect1.field}
+addUserKnob {41 which l Field_Switch T Switch1.which}
+}
+Input {
+inputs 0
+name Input1
+xpos 302
+ypos -46
+}
+set N3a03b600 [stack 0]
+FieldSelect {
+field Even
+name FieldSelect1
+xpos 462
+ypos -46
+}
+Reformat {
+format "1280 1080 0 0 1280 1080 1.5 "
+resize distort
+filter Impulse
+name Reformat1
+xpos 462
+ypos -14
+}
+set Ne3f87c00 [stack 0]
+push $N3a03b600
+Switch {
+inputs 2
+which 1
+name Switch1
+xpos 462
+ypos 42
+}
+Output {
+name Output1
+xpos 462
+ypos 78
+}
+push $Ne3f87c00
+Viewer {
+input_process false
+name Viewer1
+selected true
+xpos 539
+ypos 27
+}
+end_group
+Blend {
+inputs 2
+name Blend1
+xpos 888
+ypos 201
+}
+push $N277847a0
+Reformat {
+type "to box"
+box_width {{input.format.w}}
+box_height {{input.format.h/2}}
+box_fixed true
+box_pixel_aspect {{input.format.pixel_aspect}}
+scale 0.5
+resize distort
+filter Impulse
+name Odd1
+tile_color 0xaaaaaaff
+xpos 528
+ypos 4
+}
+push $N277847a0
+Transform {
+translate {0 1}
+center {1024 778}
+filter Impulse
+name Transform1
+xpos 668
+ypos -22
+}
+Reformat {
+type "to box"
+box_width {{input.format.w}}
+box_height {{input.format.h/2}}
+box_fixed true
+box_pixel_aspect {{input.format.pixel_aspect}}
+scale 0.5
+resize distort
+filter Impulse
+name Even
+tile_color 0xaaaaaaff
+xpos 679
+ypos 13
+}
+Switch {
+inputs 2
+which {{field}}
+name Switch2
+xpos 608
+ypos 83
+}
+Crop {
+box {0 0 {input.format.w} {input.format.h}}
+reformat true
+crop false
+name Crop1
+xpos 608
+ypos 107
+}
+Reformat {
+type "to box"
+box_width {{input.format.w i}}
+box_height {{input.format.h*2 i}}
+box_fixed true
+box_pixel_aspect {{input.format.pixel_aspect i}}
+scale 0.5
+resize distort
+filter Impulse
+name Reformat1
+xpos 608
+ypos 148
+}
+Switch {
+inputs 2
+which {{blend}}
+name Switch3
+selected true
+xpos 589
+ypos 227
+}
+Dot {
+name Dot2
+xpos 607
+ypos 272
+}
+set Nf12e0bd0 [stack 0]
+TimeClip {
+time ""
+first {{"Input1.first_frame "}}
+last {{"Input1.first_frame "}}
+origlast 4243
+origset true
+name TimeClip2
+xpos 274
+ypos 149
+}
+Merge2 {
+inputs 2
+name Merge11
+xpos 186
+ypos 197
+}
+FrameRange {
+first_frame {{"Input1.first_frame "}}
+last_frame {{Input1.last_frame}}
+time ""
+name FrameRange2
+xpos 186
+ypos 221
+}
+push $Nf12e0bd0
+Switch {
+inputs 2
+which {{firstframeonly}}
+name Switch1
+xpos 385
+ypos 342
+}
+Output {
+name Output1
+xpos 358
+ypos 413
+}
+end_group

@@ -1,0 +1,59 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push 0
+push $cut_paste_input
+Group {
+ inputs 2
+ name Geometry_Traking
+ selected true
+ xpos -1516
+ ypos 624
+ addUserKnob {20 User}
+ addUserKnob {22 obj l TransformGeo_Generate T "firstframe = str(nuke.Root().firstFrame())\nlastframe = str(nuke.Root().lastFrame())\n\nthisNode = nuke.thisNode()\ninputNode = nuke.thisNode().input(1)\n\n\nif inputNode:\n     thisNode\['translate'].fromScript(inputNode\['translate'].toScript()) \n     thisNode\['rotate'].fromScript(inputNode\['rotate'].toScript()) \n\nelse:\n     nuke.message(\"Connect Camera\")\n\n\n\nExport_Matrix = nuke.toNode(\"Export_Matrix\")\nExport_Matrix\[\"matrix\"].setExpression(\"GeometryTrack.world_matrix\")\n\nnuke.animation(\"Export_Matrix.matrix.0\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.0\"))\nnuke.animation(\"Export_Matrix.matrix.1\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.1\"))\nnuke.animation(\"Export_Matrix.matrix.2\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.2\"))\nnuke.animation(\"Export_Matrix.matrix.3\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.3\"))\nnuke.animation(\"Export_Matrix.matrix.4\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.4\"))\nnuke.animation(\"Export_Matrix.matrix.5\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.5\"))\nnuke.animation(\"Export_Matrix.matrix.6\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.6\"))\nnuke.animation(\"Export_Matrix.matrix.7\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.7\"))\nnuke.animation(\"Export_Matrix.matrix.8\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.8\"))\nnuke.animation(\"Export_Matrix.matrix.9\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.9\"))\nnuke.animation(\"Export_Matrix.matrix.10\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.10\"))\nnuke.animation(\"Export_Matrix.matrix.11\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.11\"))\nnuke.animation(\"Export_Matrix.matrix.12\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.12\"))\nnuke.animation(\"Export_Matrix.matrix.13\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.13\"))\nnuke.animation(\"Export_Matrix.matrix.14\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.14\"))\nnuke.animation(\"Export_Matrix.matrix.15\", \"generate\", (firstframe, lastframe, \"1\", \"y\", \"matrix.15\"))\n\n\nnuke.endGroup()\n\nif inputNode:\n\n     TG = nuke.nodes.TransformGeo()\n     TG\[\"useMatrix\"].setValue(1)\n    \n     TG\['matrix'].fromScript(Export_Matrix\['matrix'].toScript()) \n\n     TG.setXYpos( thisNode.xpos(), thisNode.ypos()+100)\n\nthisNode\['translate'].clearAnimated()\nthisNode\['rotate'].clearAnimated()\nExport_Matrix\[\"matrix\"].clearAnimated()\n" +STARTLINE}
+ addUserKnob {13 translate l INVISIBLE +INVISIBLE}
+ translate {1.71569252 4.301445484 -0.2007942796}
+ addUserKnob {13 rotate l INVISIBLE +INVISIBLE}
+ rotate {0.6974130869 6.264138222 -1.768017292}
+}
+ Input {
+  inputs 0
+  name Geometry_Camera
+  xpos 262
+  ypos 30
+  number 1
+ }
+ Input {
+  inputs 0
+  name Camera
+  xpos 392
+  ypos 27
+ }
+ Axis2 {
+  xform_order STR
+  rot_order YXZ
+  translate {{-parent.translate} {-parent.translate} {-parent.translate}}
+  rotate {{-parent.rotate} {-parent.rotate} {-parent.rotate}}
+  name GeometryTrack
+  xpos 402
+  ypos 102
+ }
+ Output {
+  name Output1
+  xpos 392
+  ypos 233
+ }
+ Axis2 {
+  inputs 0
+  useMatrix true
+  matrix {
+      {0.909927845 -0.08519005775 -0.4059238732 -1.276223183}
+      {0.01035857014 0.9830419421 -0.1830881536 -4.283036709}
+      {0.414637506 0.1623921841 0.8953795433 -1.230124593}
+      {0 0 0 1}
+    }
+  name Export_Matrix
+  selected true
+  xpos 244
+  ypos 100
+ }
+end_group

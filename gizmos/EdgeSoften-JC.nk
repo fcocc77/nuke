@@ -1,0 +1,148 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Group {
+ name J_EdgeSoften
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos 530
+ ypos -31
+ mapsize {0.15 0.15}
+ addUserKnob {20 User}
+ addUserKnob {41 size l Size T Blur4.size}
+ addUserKnob {7 Amount}
+ Amount 0.5
+ addUserKnob {26 ""}
+ addUserKnob {6 highlights l "High Lights" +STARTLINE}
+ highlights true
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x49415eff
+  label "exponential\n\n"
+  note_font_size 42
+  xpos 809
+  ypos 118
+  bdwidth 575
+  bdheight 681
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 304
+  ypos 161
+ }
+set Nc748ec0 [stack 0]
+push $Nc748ec0
+ Dot {
+  name Dot3
+  xpos 576
+  ypos 165
+ }
+set Nc72dfc0 [stack 0]
+ Keyer {
+  operation "luminance key"
+  range {{-parent.torelance+1} 1 1 1}
+  name Keyer1
+  xpos 686
+  ypos 155
+ }
+ Premult {
+  name Premult1
+  xpos 686
+  ypos 201
+ }
+push $Nc72dfc0
+ Dot {
+  name Dot1
+  xpos 576
+  ypos 259
+ }
+ Switch {
+  inputs 2
+  which {{highlights}}
+  name Switch1
+  xpos 686
+  ypos 255
+ }
+ Dot {
+  name Dot2
+  xpos 1088
+  ypos 259
+ }
+set N6b0e310 [stack 0]
+ Blur {
+  channels rgba
+  size {{parent.size}}
+  name Blur10
+  xpos 816
+  ypos 389
+ }
+push $N6b0e310
+ Blur {
+  channels rgba
+  size {{parent.size*2}}
+  name Blur_x2
+  xpos 930
+  ypos 390
+ }
+push $N6b0e310
+ Blur {
+  channels rgba
+  size {{parent.size*4}}
+  name Blur_x4
+  xpos 1054
+  ypos 374
+ }
+push 0
+push $N6b0e310
+ Blur {
+  channels rgba
+  size {{parent.size*8}}
+  name Blur_x8
+  xpos 1162
+  ypos 375
+ }
+push $N6b0e310
+ Blur {
+  channels rgba
+  size {{parent.size*16}}
+  name Blur_x16
+  xpos 1280
+  ypos 371
+ }
+ Merge2 {
+  inputs 5+1
+  operation screen
+  name Merge5
+  xpos 1054
+  ypos 573
+ }
+ Grade {
+  channels rgba
+  white {{parent.Amount}}
+  name Grade1
+  xpos 1054
+  ypos 693
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 304
+  ypos 693
+ }
+ Output {
+  name Output1
+  xpos 304
+  ypos 751
+ }
+push $N6b0e310
+ Blur {
+  size 1
+  name Blur4
+  xpos 1054
+  ypos 184
+ }
+end_group

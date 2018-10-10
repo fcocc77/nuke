@@ -1,0 +1,46 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+name J_Dir_Blur
+selected true
+xpos 17330
+ypos 159
+addUserKnob {20 User}
+addUserKnob {7 direction l Direccion R 0 360}
+addUserKnob {7 blur l Blur}
+blur 1
+}
+Input {
+inputs 0
+name Input1
+xpos 462
+ypos -12
+}
+Transform {
+rotate {{parent.direction}}
+center {1250 659}
+name Transform2
+selected true
+xpos 462
+ypos 52
+}
+Blur {
+size {0 {parent.blur*300}}
+name Blur1
+xpos 462
+ypos 98
+}
+Transform {
+rotate {{-parent.Transform2.rotate}}
+center {1250 659}
+name Transform3
+xpos 462
+ypos 148
+}
+Output {
+name Output1
+xpos 462
+ypos 248
+}
+end_group

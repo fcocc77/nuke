@@ -1,0 +1,72 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+name DeepFromDepth
+tile_color 0x1f0077ff
+note_font_color 0xff
+selected true
+xpos 21797
+ypos 538
+addUserKnob {20 User}
+addUserKnob {41 in l depth T Shuffle1.in}
+addUserKnob {41 premult l premultiplied T DeepFromImage3.premult}
+addUserKnob {41 keepZeroAlpha l "keep zero alpha" -STARTLINE T DeepFromImage3.keepZeroAlpha}
+addUserKnob {41 set_z l "specify z" -STARTLINE T DeepFromImage3.set_z}
+addUserKnob {41 z T DeepFromImage3.z}
+}
+Input {
+inputs 0
+name Input1
+xpos 511
+ypos 123
+}
+Dot {
+name Dot1
+xpos 545
+ypos 163
+}
+set N23ee1bc0 [stack 0]
+Shuffle {
+in depth
+name Shuffle1
+xpos 767
+ypos 160
+}
+Expression {
+channel0 depth
+expr0 1/rgba.red
+channel1 none
+channel2 none
+channel3 none
+maskChannelMask rgba.red
+name Expression1
+xpos 767
+ypos 223
+}
+Clamp {
+name Clamp2
+xpos 767
+ypos 256
+}
+push $N23ee1bc0
+Copy {
+inputs 2
+channels depth
+bbox B
+name Copy1
+xpos 511
+ypos 251
+}
+DeepFromImage {
+premult true
+name DeepFromImage3
+xpos 511
+ypos 363
+}
+Output {
+name Output1
+xpos 511
+ypos 455
+}
+end_group

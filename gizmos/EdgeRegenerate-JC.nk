@@ -1,0 +1,178 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Group {
+name Edge_Regenerate
+tile_color 0x1fff00ff
+selected true
+xpos -19
+ypos -777
+addUserKnob {20 User}
+addUserKnob {7 erode l Erode}
+erode 0.2
+addUserKnob {41 size_1 l Regenerate T EdgeBlur2.size}
+addUserKnob {26 ""}
+}
+Input {
+inputs 0
+name mask
+xpos 90
+ypos 751
+number 1
+}
+Invert {
+name Invert1
+xpos -30
+ypos 747
+}
+AddChannels {
+channels alpha
+name AddChannels1
+xpos -119
+ypos 749
+}
+Input {
+inputs 0
+name Input1
+xpos -273
+ypos 158
+}
+set N423c81d0 [stack 0]
+Dot {
+name Dot1
+xpos -239
+ypos 356
+}
+Unpremult {
+name Unpremult2
+xpos -273
+ypos 391
+}
+set N342ddd0 [stack 0]
+Dot {
+name Dot3
+xpos -239
+ypos 486
+}
+set N88b5a200 [stack 0]
+push $N342ddd0
+Dot {
+name Dot2
+xpos -358
+ypos 395
+}
+set N3447a070 [stack 0]
+AddChannels {
+channels alpha
+name AddChannels2
+xpos -392
+ypos 662
+}
+push $N88b5a200
+push $N423c81d0
+add_layer {UnpreMult UnpreMult.pass}
+Shuffle {
+in alpha
+out UnpreMult
+name Unpremult
+xpos -542
+ypos 158
+}
+Erode {
+channels UnpreMult
+size {{parent.erode*10}}
+name Erode2
+xpos -542
+ypos 184
+}
+Premult {
+channels rgba
+alpha UnpreMult.pass
+name Premult3
+xpos -542
+ypos 234
+}
+EdgeBlur {
+name EdgeBlur2
+xpos -542
+ypos 272
+}
+Unpremult {
+channels rgba
+alpha UnpreMult.pass
+name Unpremult1
+xpos -542
+ypos 315
+}
+EdgeBlur {
+name EdgeBlur1
+xpos -542
+ypos 353
+}
+push $N3447a070
+Merge2 {
+inputs 2
+name Merge1
+xpos -542
+ypos 391
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy2
+xpos -542
+ypos 476
+}
+EdgeDetectWrapper {
+channels alpha
+name EdgeDetect1
+xpos -542
+ypos 556
+}
+FilterErode {
+channels alpha
+size {{-parent.EdgeBlur2.size}}
+name FilterErode1
+xpos -542
+ypos 607
+}
+Blur {
+channels alpha
+size 10
+name Blur1
+selected true
+xpos -542
+ypos 654
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy1
+xpos -542
+ypos 749
+}
+Keymix {
+inputs 3
+name Keymix1
+xpos -271
+ypos 749
+}
+Premult {
+name Premult4
+xpos -271
+ypos 830
+}
+Remove {
+channels none
+name Remove1
+xpos -271
+ypos 893
+}
+Output {
+name Output1
+xpos -271
+ypos 982
+}
+end_group

@@ -1,0 +1,773 @@
+set cut_paste_input [stack 0]
+version 9.0 v5
+push $cut_paste_input
+Group {
+ name J_Passes_Join
+ tile_color 0x9fffff
+ selected true
+ xpos 998
+ ypos -622
+ addUserKnob {20 User}
+ addUserKnob {41 in l color T diffuse_material_color.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_1 l "direct light 1" T direct_light_1.in}
+ addUserKnob {41 in_20 l "direct light 2" T direct_light_2.in}
+ addUserKnob {41 in_21 l "direct light 3" T direct_light_3.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_4 l "specular 1" T specular.in}
+ addUserKnob {41 in_22 l "specular 2" T specular2.in}
+ addUserKnob {41 in_23 l "specular 3" T specular2.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_2 l "indirect light" T indirect_light.in}
+ addUserKnob {41 in_3 l AO T AO.in}
+ addUserKnob {41 in_5 l reflection T reflection.in}
+ addUserKnob {41 in_6 l refraction T refraction.in}
+ addUserKnob {41 in_7 l depth T depth.in}
+ addUserKnob {41 in_11 l "motion vector" T motion_vector.in}
+ addUserKnob {41 in_24 l "uv pass" T uv_pass.in}
+ addUserKnob {41 in_8 l "matte all" T matte_all.in}
+ addUserKnob {26 ""}
+ addUserKnob {41 in_9 l "matte object 01" T matte_object_1.in}
+ addUserKnob {41 in_10 l "matte object 02" T matte_object_2.in}
+ addUserKnob {41 in_12 l "matte object 03" T matte_object_3.in}
+ addUserKnob {41 in_13 l "matte object 04" T matte_object_4.in}
+ addUserKnob {41 in_14 l "matte object 05" T matte_object_5.in}
+ addUserKnob {41 in_15 l "matte object 06" T matte_object_6.in}
+ addUserKnob {41 in_16 l "matte object 07" T matte_object_7.in}
+ addUserKnob {41 in_17 l "matte object 08" T matte_object_8.in}
+ addUserKnob {41 in_18 l "matte object 09" T matte_object_9.in}
+ addUserKnob {41 in_19 l "matte object 10" T matte_object_10.in}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -547
+  ypos -379
+ }
+ Dot {
+  name Dot2
+  xpos -513
+  ypos -301
+ }
+set Nd1ad560 [stack 0]
+ Dot {
+  name Dot3
+  xpos -352
+  ypos -301
+ }
+set Nd1b2250 [stack 0]
+ Dot {
+  name Dot24
+  xpos -224
+  ypos -301
+ }
+set N11c423d0 [stack 0]
+ Dot {
+  name Dot25
+  xpos -129
+  ypos -301
+ }
+set N19c348f0 [stack 0]
+ Dot {
+  name Dot4
+  xpos -22
+  ypos -301
+ }
+set N604fae0 [stack 0]
+ Dot {
+  name Dot5
+  xpos 88
+  ypos -301
+ }
+set N15e09940 [stack 0]
+ Dot {
+  name Dot6
+  xpos 198
+  ypos -301
+ }
+set Nd1c4c90 [stack 0]
+ Dot {
+  name Dot22
+  xpos 325
+  ypos -299
+ }
+set N1108fe60 [stack 0]
+ Dot {
+  name Dot23
+  xpos 420
+  ypos -299
+ }
+set N110948a0 [stack 0]
+ Dot {
+  name Dot7
+  xpos 544
+  ypos -299
+ }
+set Nf230bc0 [stack 0]
+ Dot {
+  name Dot8
+  xpos 654
+  ypos -299
+ }
+set Nd1f4190 [stack 0]
+ Dot {
+  name Dot9
+  xpos 764
+  ypos -299
+ }
+set Nd1f8c20 [stack 0]
+ Dot {
+  name Dot10
+  xpos 895
+  ypos -299
+ }
+set Nc402e90 [stack 0]
+ Dot {
+  name Dot26
+  xpos 1046
+  ypos -300
+ }
+set N1bb9b610 [stack 0]
+ Dot {
+  name Dot11
+  xpos 1248
+  ypos -300
+ }
+set N154a6cd0 [stack 0]
+ Dot {
+  name Dot12
+  xpos 1383
+  ypos -300
+ }
+set N18108e10 [stack 0]
+ Dot {
+  name Dot13
+  xpos 1521
+  ypos -300
+ }
+set N1810d8a0 [stack 0]
+ Dot {
+  name Dot14
+  xpos 1698
+  ypos -300
+ }
+set N1811a430 [stack 0]
+ Dot {
+  name Dot15
+  xpos 1840
+  ypos -300
+ }
+set N1811ee50 [stack 0]
+ Dot {
+  name Dot16
+  xpos 1994
+  ypos -300
+ }
+set N181238e0 [stack 0]
+ Dot {
+  name Dot17
+  xpos 2128
+  ypos -300
+ }
+set N18128370 [stack 0]
+ Dot {
+  name Dot18
+  xpos 2259
+  ypos -300
+ }
+set N1812cdd0 [stack 0]
+ Dot {
+  name Dot19
+  xpos 2401
+  ypos -300
+ }
+set N18131740 [stack 0]
+ Dot {
+  name Dot20
+  xpos 2555
+  ypos -300
+ }
+set N181363f0 [stack 0]
+ Dot {
+  name Dot21
+  xpos 2689
+  ypos -300
+ }
+add_layer {matte_object_10 matte_object_10.red}
+ Shuffle {
+  in none
+  out matte_object_10
+  name matte_object_10
+  xpos 2655
+  ypos -256
+ }
+ Remove {
+  operation keep
+  channels matte_object_10
+  name Remove20
+  xpos 2655
+  ypos -232
+ }
+push $N181363f0
+add_layer {matte_object_09 matte_object_09.red}
+ Shuffle {
+  in none
+  out matte_object_09
+  name matte_object_9
+  xpos 2521
+  ypos -267
+ }
+ Remove {
+  operation keep
+  channels matte_object_09
+  name Remove19
+  xpos 2521
+  ypos -243
+ }
+push $N18131740
+add_layer {matte_object_08 matte_object_08.red}
+ Shuffle {
+  in none
+  out matte_object_08
+  name matte_object_8
+  xpos 2367
+  ypos -257
+ }
+ Remove {
+  operation keep
+  channels matte_object_08
+  name Remove18
+  xpos 2367
+  ypos -233
+ }
+push $N1812cdd0
+add_layer {matte_object_07 matte_object_07.red}
+ Shuffle {
+  in none
+  out matte_object_07
+  name matte_object_7
+  xpos 2225
+  ypos -251
+ }
+ Remove {
+  operation keep
+  channels matte_object_07
+  name Remove17
+  xpos 2225
+  ypos -227
+ }
+push $N18128370
+add_layer {matte_object_06 matte_object_06.red}
+ Shuffle {
+  in none
+  out matte_object_06
+  name matte_object_6
+  xpos 2094
+  ypos -254
+ }
+ Remove {
+  operation keep
+  channels matte_object_06
+  name Remove16
+  xpos 2094
+  ypos -230
+ }
+push $N181238e0
+add_layer {matte_object_05 matte_object_05.red}
+ Shuffle {
+  in none
+  out matte_object_05
+  name matte_object_5
+  xpos 1960
+  ypos -250
+ }
+ Remove {
+  operation keep
+  channels matte_object_05
+  name Remove15
+  xpos 1960
+  ypos -224
+ }
+push $N1811ee50
+add_layer {matte_object_04 matte_object_04.red}
+ Shuffle {
+  in none
+  out matte_object_04
+  name matte_object_4
+  xpos 1806
+  ypos -231
+ }
+ Remove {
+  operation keep
+  channels matte_object_04
+  name Remove14
+  xpos 1806
+  ypos -207
+ }
+push $N1811a430
+add_layer {matte_object_03 matte_object_03.red}
+ Shuffle {
+  in none
+  out matte_object_03
+  name matte_object_3
+  xpos 1664
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels matte_object_03
+  name Remove13
+  xpos 1664
+  ypos -201
+ }
+push $N1810d8a0
+add_layer {matte_object_02 matte_object_02.red}
+ Shuffle {
+  in none
+  out matte_object_02
+  name matte_object_2
+  xpos 1487
+  ypos -216
+ }
+ Remove {
+  operation keep
+  channels matte_object_02
+  name Remove11
+  xpos 1487
+  ypos -190
+ }
+push $N18108e10
+add_layer {matte_object_01 matte_object_01.red}
+ Shuffle {
+  in none
+  out matte_object_01
+  name matte_object_1
+  xpos 1349
+  ypos -213
+ }
+ Remove {
+  operation keep
+  channels matte_object_01
+  name Remove10
+  xpos 1349
+  ypos -187
+ }
+push $N154a6cd0
+add_layer {matte_all matte_all.a}
+ Shuffle {
+  in none
+  out matte_all
+  name matte_all
+  xpos 1214
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels matte_all
+  name Remove9
+  xpos 1214
+  ypos -201
+ }
+push $N1bb9b610
+add_layer {uv_pass uv_pass.nx uv_pass.ny uv_pass.nz}
+ Shuffle {
+  in none
+  out uv_pass
+  name uv_pass
+  xpos 1012
+  ypos -245
+ }
+ Remove {
+  operation keep
+  channels uv_pass
+  name Remove25
+  xpos 1012
+  ypos -219
+ }
+push $Nc402e90
+ Shuffle {
+  in none
+  out motion
+  name motion_vector
+  xpos 861
+  ypos -222
+ }
+ Remove {
+  operation keep
+  channels motion
+  name Remove12
+  xpos 861
+  ypos -198
+ }
+push $Nd1f8c20
+ Shuffle {
+  in none
+  out depth
+  name depth
+  xpos 730
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels depth
+  name Remove8
+  xpos 730
+  ypos -201
+ }
+push $Nd1f4190
+add_layer {refraction refraction.red refraction.green refraction.blue}
+ Shuffle {
+  in none
+  out refraction
+  name refraction
+  xpos 620
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels refraction
+  name Remove7
+  xpos 620
+  ypos -201
+ }
+push $Nf230bc0
+add_layer {reflection reflection.red reflection.green reflection.blue}
+ Shuffle {
+  in none
+  out reflection
+  name reflection
+  xpos 510
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels reflection
+  name Remove6
+  xpos 510
+  ypos -201
+ }
+push $N110948a0
+add_layer {SPEC_specular_persp SPEC_specular_persp.red SPEC_specular_persp.green SPEC_specular_persp.blue}
+add_layer {specular_3 specular_3.red}
+ Shuffle {
+  in SPEC_specular_persp
+  out specular_3
+  name specular3
+  xpos 386
+  ypos -223
+ }
+ Remove {
+  operation keep
+  channels specular_3
+  name Remove22
+  xpos 386
+  ypos -199
+ }
+push $N1108fe60
+add_layer {specular_2 specular_2.red}
+ Shuffle {
+  in none
+  out specular_2
+  name specular2
+  xpos 291
+  ypos -226
+ }
+ Remove {
+  operation keep
+  channels specular_2
+  name Remove21
+  xpos 291
+  ypos -202
+ }
+push $Nd1c4c90
+add_layer {specular_1 specular_1.red}
+ Shuffle {
+  in none
+  out specular_1
+  name specular
+  xpos 164
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels specular_1
+  name Remove5
+  xpos 164
+  ypos -201
+ }
+push $N15e09940
+add_layer {AO AO.red AO.green AO.blue}
+ Shuffle {
+  in none
+  out {AO.red -AO.green -AO.blue}
+  name AO
+  xpos 54
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels {AO.red -AO.green -AO.blue}
+  name Remove4
+  xpos 54
+  ypos -201
+ }
+push $N604fae0
+add_layer {indirect_light indirect_light.red indirect_light.green indirect_light.blue}
+ Shuffle {
+  in none
+  out indirect_light
+  name indirect_light
+  xpos -56
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels indirect_light
+  name Remove3
+  xpos -56
+  ypos -201
+ }
+push $N19c348f0
+add_layer {direct_light_3 direct_light_3.red}
+ Shuffle {
+  in none
+  out direct_light_3
+  name direct_light_3
+  xpos -163
+  ypos -221
+ }
+ Remove {
+  operation keep
+  channels direct_light_3
+  name Remove24
+  xpos -163
+  ypos -197
+ }
+push $N11c423d0
+add_layer {direct_light_2 direct_light_2.red}
+ Shuffle {
+  in none
+  out direct_light_2
+  name direct_light_2
+  xpos -258
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels direct_light_2
+  name Remove23
+  xpos -258
+  ypos -201
+ }
+push $Nd1b2250
+add_layer {direct_light_1 direct_light_1.red}
+ Shuffle {
+  in none
+  out direct_light_1
+  name direct_light_1
+  xpos -386
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels direct_light_1
+  name Remove2
+  xpos -386
+  ypos -201
+ }
+push $Nd1ad560
+add_layer {diffuse_material_color diffuse_material_color.red diffuse_material_color.green diffuse_material_color.blue}
+ Shuffle {
+  in none
+  out diffuse_material_color
+  name diffuse_material_color
+  xpos -547
+  ypos -225
+ }
+ Remove {
+  operation keep
+  channels diffuse_material_color
+  name Remove1
+  xpos -547
+  ypos -201
+ }
+ Dot {
+  name Dot1
+  xpos -513
+  ypos -134
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge1
+  xpos -386
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge22
+  xpos -268
+  ypos -140
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge23
+  xpos -166
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge2
+  xpos -56
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge3
+  xpos 54
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge4
+  xpos 164
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge20
+  xpos 285
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge21
+  xpos 386
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge5
+  xpos 510
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge6
+  xpos 620
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge7
+  xpos 730
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge11
+  xpos 869
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge24
+  selected true
+  xpos 1014
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge8
+  xpos 1214
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge9
+  xpos 1349
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge10
+  xpos 1487
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge12
+  xpos 1664
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge13
+  xpos 1806
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge14
+  xpos 1960
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge15
+  xpos 2094
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge16
+  xpos 2225
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge17
+  xpos 2367
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge18
+  xpos 2521
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  also_merge all
+  name Merge19
+  xpos 2655
+  ypos -137
+ }
+ Output {
+  name Output1
+  xpos 2655
+  ypos -77
+ }
+end_group

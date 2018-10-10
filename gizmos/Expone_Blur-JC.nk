@@ -1,0 +1,116 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+push $cut_paste_input
+Group {
+name J_Expone_Blur
+selected true
+xpos -1513
+ypos 748
+addUserKnob {20 User}
+addUserKnob {41 size T Blur10.size}
+addUserKnob {6 invert +STARTLINE}
+}
+BackdropNode {
+inputs 0
+name BackdropNode2
+tile_color 0x49415eff
+label "exponential\n\n"
+note_font_size 42
+xpos 341
+ypos -643
+bdwidth 591
+bdheight 538
+}
+Input {
+inputs 0
+name Input1
+xpos 201
+ypos -620
+}
+set Nbba1b750 [stack 0]
+Invert {
+channels rgba
+clamp true
+name Invert1
+xpos 124
+ypos -533
+}
+push $Nbba1b750
+Switch {
+inputs 2
+which {{invert}}
+name Switch1
+xpos 232
+ypos -543
+}
+Dot {
+name Dot3
+xpos 622
+ypos -571
+}
+set Nbba1ed10 [stack 0]
+Blur {
+size 5
+name Blur10
+xpos 377
+ypos -378
+}
+push $Nbba1ed10
+Blur {
+size {{parent.Blur10.size*2}}
+name Blur6
+xpos 474
+ypos -382
+}
+push $Nbba1ed10
+Blur {
+size {{parent.Blur10.size*4}}
+name Blur7
+xpos 588
+ypos -384
+}
+push 0
+push $Nbba1ed10
+Blur {
+size {{parent.Blur10.size*16}}
+name Blur8
+xpos 812
+ypos -374
+}
+push $Nbba1ed10
+Blur {
+size {{parent.Blur10.size*8}}
+name Blur9
+xpos 707
+ypos -377
+}
+Merge2 {
+inputs 5+1
+operation screen
+name Merge9
+selected true
+xpos 566
+ypos -186
+}
+set Nbba37ba0 [stack 0]
+Invert {
+channels rgba
+clamp true
+name Invert2
+xpos 472
+ypos -155
+}
+push $Nbba37ba0
+Switch {
+inputs 2
+which {{invert}}
+name Switch2
+xpos 566
+ypos -90
+}
+Output {
+name Output1
+xpos 566
+ypos -14
+}
+end_group

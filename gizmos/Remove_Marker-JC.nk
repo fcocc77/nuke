@@ -1,0 +1,178 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+push 0
+Group {
+inputs 2
+name Remove_Marker
+tile_color 0xff5f00ff
+selected true
+xpos 1827
+ypos -279
+addUserKnob {20 User}
+addUserKnob {41 size l Amount T EdgeBlur1.size}
+addUserKnob {41 size_1 l Blur T Blur2.size}
+addUserKnob {26 ""}
+addUserKnob {41 which l mix T Dissolve1.which}
+}
+Input {
+inputs 0
+name mask
+xpos 1225
+ypos -51
+number 1
+}
+AddChannels {
+channels alpha
+name AddChannels1
+xpos 1225
+ypos 73
+}
+set N1df1a000 [stack 0]
+Blur {
+size {{parent.EdgeBlur1.size}}
+name Blur1
+xpos 1225
+ypos 229
+}
+Dot {
+name Dot7
+xpos 1259
+ypos 301
+}
+push $N1df1a000
+Input {
+inputs 0
+name B
+xpos 524
+ypos 16
+}
+set N1df57400 [stack 0]
+Dot {
+name Dot8
+xpos 870
+ypos 20
+}
+set N1df57000 [stack 0]
+Dot {
+name Dot5
+xpos 1043
+ypos 20
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy1
+xpos 1009
+ypos 73
+}
+Invert {
+channels alpha
+name Invert1
+xpos 1010
+ypos 149
+}
+Premult {
+name Premult2
+xpos 1010
+ypos 205
+}
+EdgeBlur {
+size 10
+name EdgeBlur1
+xpos 1010
+ypos 229
+}
+Unpremult {
+name Unpremult2
+xpos 1010
+ypos 261
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy2
+xpos 1010
+ypos 294
+}
+Blur {
+channels rgb
+size 10
+maskChannelInput rgba.alpha
+name Blur2
+xpos 1010
+ypos 332
+}
+set N19971000 [stack 0]
+Shuffle {
+in alpha
+name Shuffle1
+xpos 1162
+ypos 338
+}
+Unpremult {
+name Unpremult1
+xpos 1162
+ypos 386
+}
+Blur {
+size 15
+name Blur3
+xpos 1162
+ypos 412
+}
+push $N19971000
+Copy {
+inputs 2
+from0 rgba.red
+to0 rgba.alpha
+name Copy4
+xpos 1010
+ypos 412
+}
+set N19970000 [stack 0]
+push $N1df57000
+AddChannels {
+channels alpha
+name AddChannels2
+xpos 836
+ypos 137
+}
+push $N19970000
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy3
+xpos 836
+ypos 412
+}
+add_layer {hole hole.red}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 hole.red
+name Copy5
+xpos 836
+ypos 474
+}
+push $N1df57400
+Dot {
+name Dot1
+xpos 558
+ypos 553
+}
+Dissolve {
+inputs 2
+name Dissolve1
+xpos 836
+ypos 543
+}
+Output {
+name Output1
+xpos 836
+ypos 599
+}
+end_group

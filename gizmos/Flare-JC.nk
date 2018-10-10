@@ -1,0 +1,165 @@
+set cut_paste_input [stack 0]
+version 8.0 v3
+push $cut_paste_input
+push 0
+Group {
+ inputs 2
+ name J_Flare
+ tile_color 0xff9455ff
+ selected true
+ xpos 178
+ ypos 78
+ addUserKnob {20 User}
+ addUserKnob {12 origen l Origen}
+ origen {645 635}
+ addUserKnob {12 Center}
+ Center {1440 600}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 r1 l rotate T Flare_Rig1.r1}
+ addUserKnob {41 lr1 l "lock rotation" -STARTLINE T Flare_Rig1.lr1}
+ addUserKnob {41 sp1 l spread T Flare_Rig1.sp1}
+ addUserKnob {41 scale_scale l scale T Flare_Rig1.scale_scale}
+ addUserKnob {41 color T Flare_Rig1.color}
+ addUserKnob {41 opacity T Flare_Rig1.opacity}
+ addUserKnob {41 defocus T Flare_Rig1.defocus}
+ addUserKnob {41 la1 l "Limit Axis" T Flare_Rig1.la1}
+ addUserKnob {41 TAF1on l enable T Flare_Rig1.TAF1on}
+}
+ Input {
+  inputs 0
+  name Flare
+  xpos -385
+  ypos -2441
+  number 1
+ }
+ Reformat {
+  format "512 512 0 0 512 512 1 square_512"
+  name Reformat1
+  xpos -385
+  ypos -2417
+ }
+ Group {
+  name Flare_Rig1
+  help "There are 5 flare inputs and 1 Occlusion & Mask layer and the background input."
+  tile_color 0xff5f00ff
+  note_font Verdana
+  xpos -385
+  ypos -2352
+  mapsize {0.15 0.15}
+  addUserKnob {20 Master l "Flare Rig" t "Master Controls"}
+  addUserKnob {6 color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {12 Origin}
+  Origin {{parent.origen} {parent.origen}}
+  addUserKnob {6 aTr l INVISIBLE +INVISIBLE +STARTLINE}
+  addUserKnob {1 tracN l INVISIBLE t "Type in the name of the node and the field and check Apply Track.  This will automaticly link to the translate field\nex: Tracker1" -STARTLINE +INVISIBLE}
+  tracN Tracker1
+  addUserKnob {6 cPointmOn l enable +STARTLINE}
+  cPointmOn true
+  addUserKnob {12 Cent l "Center Point"}
+  Cent {{parent.Center} {parent.Center}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {14 t1 l translate R 0 100}
+  addUserKnob {7 r1 l rotate R -180 180}
+  addUserKnob {6 lr1 l "lock rotation" -STARTLINE}
+  addUserKnob {7 sp1 l spread t "This determines the distance from the origin/center.  \nExamples\n0 = origin\n1 = center\n2 = mirror of origin" R 0 10}
+  addUserKnob {14 scale_scale l scale R 0.1 10}
+  scale_scale 1
+  addUserKnob {18 color}
+  color 1
+  addUserKnob {6 color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {7 opacity}
+  opacity 1
+  addUserKnob {41 defocus T Defocus1.defocus}
+  addUserKnob {4 la1 l "Limit Axis" M {Disabled "Y Axis only" "X Axis only"}}
+  addUserKnob {6 TAF1on l enable +STARTLINE}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 525
+   ypos 1007
+  }
+  AdjBBox {
+   numpixels {{parent.Defocus1.defocus}}
+   name AdjBBox1
+   xpos 525
+   ypos 1152
+  }
+  Defocus {
+   defocus 0
+   name Defocus1
+   xpos 526
+   ypos 1188
+  }
+  Transform {
+   scale {{parent.scale_scale.w} {parent.scale_scale.h}}
+   center {256 256}
+   name scale
+   xpos 521
+   ypos 1261
+  }
+  Transform {
+   translate {{"(la1 == 1 ? 0 : (-(((xyLink2.x - xyLink1.x)*spread +xyLink2.x) - center.x))) + t1.w + (parent.cPointmOn == 1 ? (parent.Cent.x - input.format.width/2)*2 : 0)"} {"(la1 == 2 ? 0 : (-(((xyLink2.y - xyLink1.y)*spread + xyLink2.y) - center.y))) + t1.h + (parent.cPointmOn == 1 ? (parent.Cent.y - input.format.height/2)*2 : 0)"}}
+   rotate {{"(lr1 == 1 ? 0 :(-(atan2(xyLink2.x - xyLink1.x, xyLink2.y - xyLink1.y)) * 180/ pi)) + r1 + (parent.TAF1on == 1 ? (parent.TArot1 * parent.MAction.OAct1) : 0)"}}
+   center {{input.format.width/2} {input.format.height/2}}
+   name TransformFlare1
+   tile_color 0xffff
+   xpos 521
+   ypos 1305
+   addUserKnob {20 Buehler l User}
+   addUserKnob {12 xyLink1}
+   xyLink1 {{"parent.cPointmOn == 1 ? parent.Cent.x : root.format.width/2"} {"parent.cPointmOn == 1 ? parent.Cent.y : root.format.height/2"}}
+   addUserKnob {12 xyLink2}
+   xyLink2 {{parent.Origin.x} {parent.Origin.y}}
+   addUserKnob {7 spread R 0.1 1}
+   spread {{parent.sp1-2}}
+   addUserKnob {12 noSpread}
+   noSpread {{"la1 == 1 ? 0 : xyLink2.x - center.x"} {"la1 == 2 ? 0 :xyLink2.y - center.y"}}
+  }
+  Grade {
+   channels rgba
+   white {{parent.opacity}}
+   name Opacity
+   xpos 521
+   ypos 1354
+  }
+  Grade {
+   white {{parent.color} {parent.color} {parent.color} {parent.color}}
+   name Grade1
+   selected true
+   xpos 521
+   ypos 1394
+  }
+  Output {
+   name Output1
+   xpos 521
+   ypos 1477
+  }
+ end_group
+ Input {
+  inputs 0
+  name B
+  xpos -726
+  ypos -2297
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  fringe true
+  name Merge1
+  xpos -383
+  ypos -2297
+ }
+ Crop {
+  box {{B.bbox.x} {B.bbox.y} {B.bbox.r} {B.bbox.t}}
+  name Crop1
+  xpos -383
+  ypos -2184
+ }
+ Output {
+  name Output1
+  xpos -383
+  ypos -2091
+ }
+end_group

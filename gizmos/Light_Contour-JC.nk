@@ -1,0 +1,69 @@
+set cut_paste_input [stack 0]
+version 7.0 v9
+push $cut_paste_input
+Group {
+ name J_Light_Contour
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos -343
+ ypos 171
+ mapsize {0.15 0.15}
+ addUserKnob {20 User}
+ addUserKnob {7 angle l Angle R 0 360}
+ addUserKnob {7 width l Width}
+ width 0.1
+ addUserKnob {41 size l Blur T Blur1.size}
+ addUserKnob {41 white l Gain T Grade3.white}
+}
+ Input {
+  inputs 0
+  name Input1
+  selected true
+  xpos -783
+  ypos -102
+ }
+set N1abe24a0 [stack 0]
+ Shuffle {
+  in alpha
+  name Shuffle2
+  xpos -600
+  ypos -102
+ }
+ Transform {
+  translate {{"(parent.knob.width*300) * ((Input1.bbox.t-Input1.bbox.y)/400)" i} {curve i}}
+  rotate {{-parent.Transform14.rotate i x99 180}}
+  center {1296 968}
+  name Transform13
+  xpos -600
+  ypos -78
+ }
+ Transform {
+  rotate {{parent.angle}}
+  center {1296 968}
+  name Transform14
+  xpos -600
+  ypos -27
+ }
+ Blur {
+  name Blur1
+  xpos -600
+  ypos -3
+ }
+push $N1abe24a0
+ Grade {
+  inputs 1+1
+  white 4
+  multiply 1.02
+  gamma 1.02
+  invert_mask true
+  name Grade3
+  xpos -600
+  ypos 42
+ }
+ Output {
+  name Output1
+  xpos -600
+  ypos 91
+ }
+end_group

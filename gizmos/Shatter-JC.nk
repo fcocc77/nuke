@@ -1,0 +1,49 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Group {
+ name Shatter
+ tile_color 0xff9fff
+ selected true
+ xpos -592
+ ypos -50
+ addUserKnob {20 User}
+ addUserKnob {22 shatter l Shatter T "import random\n\n\n\nprogres = nuke.ProgressTask(\"Shattering\")\n\n\nnode = nuke.thisNode()\nnodeInput=node.input(0)\n \nshape= nodeInput\[\"curves\"]\nlayer=shape.rootLayer\n\n\n\nnode.begin()\n\n\n\nfor n in nuke.allNodes():\n\tif not n.Class() ==\"Input\":\n\t\tif not n.Class() ==\"Output\":\n\t\t\tif not n.Class() ==\"Shuffle\":\n\t\t\t\tnuke.delete(n)\n\n\n\n\n\ninput = nuke.toNode(\"Input1\")\noutput = nuke.toNode(\"Output1\")\n\ncount=0\nfor s in layer:\n\tcount=count+1\n\n\n\ncountProgress=0\nn=2\nfor s in layer:\n\tn=n-1\n\t\n\tif n ==0:\n\t\tnegative=-10\n\telse:\n\t\tnegative=10\n\tif n ==0:\n\t\tn=2\n\n\n\tcountProgress=countProgress+1\n\tporcent=(countProgress*100)/count\n\n\tprogres.setProgress(int(porcent))\n\n\n\troto=nuke.createNode(\"Roto\",inpanel=False)\n\troto.setInput(0,input)\n\n\n\troto\[\"curves\"].rootLayer.append(s.clone())\n\n\troto\[\"premultiply\"].setValue(\"rgba\")\n\t\n\n\n\tedge= nuke.createNode(\"EdgeDetect\",inpanel=False)\n\n\tedge\[\"channels\"].setValue(\"alpha\")\n\tedge\[\"output\"].setValue(\"mask.a\")\n\n\tnuke.createNode(\"Clamp\",inpanel=False)\n\n\tgrade=nuke.createNode(\"Grade\",inpanel=False)\n\tgrade\[\"channels\"].setValue(\"mask\")\n\n\tgradeG=grade\[\"white\"]\n\tgradeG.setAnimated(0)\n\tanimation=gradeG.animations()\[0]\n\tanimation.setKey(1,0)\n\tanimation.changeInterpolation(animation.keys(),nuke.HORIZONTAL)\n\n\tanimation.setKey(10,10)\n\tanimation.changeInterpolation(animation.keys(),nuke.AFTER_LINEAR)\n\n\n\n\n\n\ttransform=nuke.createNode(\"Transform\",inpanel=False)\n\ttransformName=transform.name()\n\tshapeName=roto\[\"curves\"].rootLayer\[0].name\n\trotoName=roto.name()\n\texp=rotoName+\".curves.\"+shapeName+\".center\"\n\n\n\t\n\trotate=transform\[\"rotate\"]\n\trotate.setAnimated(0)\n\tanimation=rotate.animations()\[0]\n\tanimation.setKey(1,0)\n\tanimation.changeInterpolation(animation.keys(),nuke.HORIZONTAL)\n\n\tanimation.setKey(10,negative)\n\tanimation.changeInterpolation(animation.keys(),nuke.AFTER_LINEAR)\n\n\ttranslate=transform\[\"translate\"]\n\t\n\ttranslate.setAnimated(0)\n\tanimation=translate.animations()\[0]\n\tanimation.setKey(1,0)\n\tanimation.changeInterpolation(animation.keys(),nuke.HORIZONTAL)\n\tanimation.setKey(10,-10)\n\tanimation.changeInterpolation(animation.keys(),nuke.AFTER_LINEAR)\n\n\ttranslate.setAnimated(1)\n\tanimation=translate.animations()\[1]\n\tanimation.setKey(1,0)\n\tanimation.changeInterpolation(animation.keys(),nuke.HORIZONTAL)\n\tanimation.setKey(10,-10)\n\tanimation.changeInterpolation(animation.keys(),nuke.AFTER_LINEAR)\n\n\n\trand=str(random.uniform(0,1))\n\n\tdistance=\"((sqrt(pow2((start.x-\"+transformName+\".center.x)*xtime)+ pow2((start.y-\"+transformName+\".center.y)*ytime)))/100)\"\n\n\n\txDistance=\"clamp((start.x-center.x),-1,1)\"\n\n\ttransform\[\"rotate\"].setExpression(\"curve(x-(startframe+\"+distance+\"+random_time))*rotation*((\"+rand+\"*randoms)+1)\")\n\ttransform\[\"translate\"].setExpression(\"curve(x-(startframe+\"+distance+\"+random_time))*expansion*((\"+rand+\"*randoms)+1)*\"+xDistance,0)\n\ttransform\[\"translate\"].setExpression(\"curve(x-(startframe+\"+distance+\"+random_time))*gravety*((\"+rand+\"*randoms)+1)\",1)\n\n\tgradeG.setExpression(\"curve(x-(startframe+\"+distance+\"+random_time))*maskdisolve\")\n\n\n\n\n\ttransform\[\"center\"].setExpression(exp)\n\n\n\n\n\tmerge=nuke.createNode(\"Merge\",inpanel=False)\n\n\ttry:\n\t\tmerge.setInput(0,mergeOld)\n\t\tmerge\[\"also_merge\"].setValue(\"all\")\n\texcept:pass\n\n\tmergeOld=merge\n\n\noutput.setInput(0,merge)\n\nnode.end()" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {12 start l "Position Expander"}
+ addUserKnob {7 maskdisolve l "Smoke Disolve" R 0 10}
+ addUserKnob {26 ""}
+ addUserKnob {7 rotation l "Rotate Speed"}
+ addUserKnob {7 gravety l "Fall Speed"}
+ gravety 0.5
+ addUserKnob {7 expansion l "Expansion Speed" R 0 10}
+ addUserKnob {7 randoms l "Random Speed" R 0 10}
+ addUserKnob {26 ""}
+ addUserKnob {26 time l Time}
+ addUserKnob {3 startframe l "Start Frame"}
+ startframe 1
+ addUserKnob {7 xtime l "X Time" R 0 20}
+ xtime 5
+ addUserKnob {7 ytime l "Y Time" R 0 20}
+ ytime 5
+ addUserKnob {7 random_time l "Random Time" R 0 10}
+ addUserKnob {26 ""}
+}
+ Input {
+  inputs 0
+  name Input2
+  xpos 180
+  ypos -3106
+ }
+ Shuffle {
+  alpha white
+  name Input1
+  xpos 180
+  ypos -3080
+ }
+ Output {
+  name Output1
+  xpos 180
+  ypos -3054
+ }
+end_group

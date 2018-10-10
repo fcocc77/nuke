@@ -1,0 +1,185 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push $cut_paste_input
+Group {
+ name J_EdgeMotionBlur
+ tile_color 0xff5f00ff
+ note_font Verdana
+ selected true
+ xpos 512
+ ypos 35
+ mapsize {0.15 0.15}
+ addUserKnob {20 User}
+ addUserKnob {41 useGPUIfAvailable l "Use GPU if available" T VectorGenerator1.useGPUIfAvailable}
+ addUserKnob {26 ""}
+ addUserKnob {26 VectorGenerator l "" +STARTLINE T VectorGenerator}
+ addUserKnob {41 vectorDetail l "Vector Detail" T VectorGenerator1.vectorDetail}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {41 Blur T Blur2.size}
+ addUserKnob {6 displayvector l "Display Vector" +STARTLINE}
+ addUserKnob {6 VectorFromAlpha +STARTLINE}
+ VectorFromAlpha true
+ addUserKnob {26 ""}
+ addUserKnob {26 VectorBlur l "" +STARTLINE T VectorBlur}
+ addUserKnob {41 Amount T VectorBlur1.scale}
+ addUserKnob {41 Offset T VectorBlur1.offset}
+ addUserKnob {26 ""}
+ addUserKnob {26 Edge l "" +STARTLINE T Edge}
+ addUserKnob {7 Width R 0 100}
+ Width 20
+ addUserKnob {41 Softness T Blur1.size}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 227
+  ypos -15
+ }
+set Nd57336a0 [stack 0]
+ Shuffle {
+  in alpha
+  name Shuffle2
+  xpos 92
+  ypos -101
+ }
+push $Nd57336a0
+ Switch {
+  inputs 2
+  which {{VectorFromAlpha i}}
+  name Switch2
+  xpos 92
+  ypos -15
+ }
+ VectorGenerator {
+  vectorSourceFlag 5
+  warpSourceFlag 5
+  computedVectorFlag 5
+  maskFlag 5
+  name VectorGenerator1
+  xpos 92
+  ypos 14
+ }
+ Blur {
+  channels motion
+  size 50
+  name Blur2
+  xpos 92
+  ypos 57
+ }
+ FrameRange {
+  first_frame 1
+  last_frame {{"Input1.last_frame -1" i}}
+  time ""
+  name FrameRange1
+  xpos 92
+  ypos 129
+ }
+ Retime {
+  input.last {{parent.FrameRange1.knob.last_frame}}
+  input.last_lock true
+  output.last 50
+  shutter 0
+  time ""
+  name Retime2
+  selected true
+  xpos 92
+  ypos 185
+ }
+set Nd57491e0 [stack 0]
+ Shuffle {
+  in motion
+  name Shuffle1
+  xpos 92
+  ypos 479
+ }
+push $Nd57336a0
+ Erode {
+  size {{parent.Width}}
+  name Erode1
+  xpos 389
+  ypos -20
+ }
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos 389
+  ypos 158
+ }
+ Blur {
+  channels alpha
+  size 20
+  name Blur1
+  xpos 389
+  ypos 247
+ }
+set Nd575ccd0 [stack 0]
+push $Nd57491e0
+push $Nd57336a0
+ Copy {
+  inputs 2
+  channels motion
+  name Copy1
+  xpos 227
+  ypos 174
+ }
+ VectorBlur {
+  inputs 1+1
+  channels rgba
+  uv motion
+  scale 0.5
+  invert_mask true
+  name VectorBlur1
+  xpos 227
+  ypos 252
+ }
+set Nd5765bc0 [stack 0]
+ AddChannels {
+  channels alpha
+  name AddChannels2
+  xpos 227
+  ypos 340
+ }
+push $Nd575ccd0
+ Invert {
+  channels alpha
+  name Invert1
+  xpos 402
+  ypos 335
+ }
+push $Nd5765bc0
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 315
+  ypos 335
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy3
+  xpos 227
+  ypos 433
+ }
+ Switch {
+  inputs 2
+  which {{displayvector i}}
+  name Switch1
+  xpos 227
+  ypos 479
+ }
+ Remove {
+  channels motion
+  name Remove1
+  xpos 227
+  ypos 520
+ }
+ Output {
+  name Output1
+  xpos 227
+  ypos 566
+ }
+end_group

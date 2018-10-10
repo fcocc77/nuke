@@ -1,0 +1,454 @@
+set cut_paste_input [stack 0]
+version 9.0 v7
+push $cut_paste_input
+Group {
+ name J_Grow_Petal
+ tile_color 0xff5f00ff
+ selected true
+ xpos 163
+ ypos -80
+ addUserKnob {20 User}
+ addUserKnob {7 desfase l Desfase R 0 30}
+ addUserKnob {7 scale l Scale}
+ scale 1
+ addUserKnob {26 ""}
+ addUserKnob {12 petal1 l "Petal 1"}
+ addUserKnob {12 petal2 l "Petal 2"}
+ petal2 {100 0}
+ addUserKnob {12 petal3 l "Petal 3"}
+ petal3 {200 0}
+ addUserKnob {12 petal4 l "Petal 4"}
+ petal4 {300 0}
+ addUserKnob {12 petal5 l "Petal 5"}
+ petal5 {400 0}
+ addUserKnob {12 petal6 l "Petal 6"}
+ petal6 {500 0}
+ addUserKnob {12 petal7 l "Petal 7"}
+ petal7 {600 0}
+ addUserKnob {12 petal8 l "Petal 8"}
+ petal8 {700 0}
+ addUserKnob {12 petal9 l "Petal 9"}
+ petal9 {800 0}
+ addUserKnob {12 petal10 l "Petal 10"}
+ petal10 {900 0}
+ addUserKnob {12 petal11 l "Petal 11"}
+ petal11 {1000 0}
+ addUserKnob {12 petal12 l "Petal 12"}
+ petal12 {1100 0}
+ addUserKnob {12 petal13 l "Petal 13"}
+ petal13 {1200 0}
+ addUserKnob {12 petal14 l "Petal 14"}
+ petal14 {1300 0}
+ addUserKnob {12 petal15 l "Petal 15"}
+ petal15 {1400 0}
+ addUserKnob {12 petal16 l "Petal 16"}
+ petal16 {1500 0}
+ addUserKnob {12 petal17 l "Petal 17"}
+ petal17 {1600 0}
+ addUserKnob {12 petal18 l "Petal 18"}
+ petal18 {1700 0}
+ addUserKnob {12 petal19 l "Petal 19"}
+ petal19 {1800 0}
+ addUserKnob {12 petal20 l Petal20}
+ petal20 {1900 0}
+}
+ Input {
+  inputs 0
+  name Input20
+  xpos 1830
+  ypos -850
+  number 19
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*19))}}
+  center {{parent.petal20} {parent.petal20}}
+  name Transform20
+  xpos 1830
+  ypos -824
+ }
+ Input {
+  inputs 0
+  name Input19
+  xpos 1720
+  ypos -798
+  number 18
+ }
+ Merge2 {
+  inputs 2
+  name Merge19
+  xpos 1830
+  ypos -798
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*18))}}
+  center {{parent.petal19} {parent.petal19}}
+  name Transform19
+  xpos 1830
+  ypos -772
+ }
+ Input {
+  inputs 0
+  name Input18
+  xpos 1610
+  ypos -746
+  number 17
+ }
+ Merge2 {
+  inputs 2
+  name Merge18
+  xpos 1830
+  ypos -746
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*17))}}
+  center {{parent.petal18} {parent.petal18}}
+  name Transform18
+  xpos 1830
+  ypos -720
+ }
+ Input {
+  inputs 0
+  name Input17
+  xpos 1500
+  ypos -694
+  number 16
+ }
+ Merge2 {
+  inputs 2
+  name Merge17
+  xpos 1830
+  ypos -694
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*16))}}
+  center {{parent.petal17} {parent.petal17}}
+  name Transform17
+  xpos 1830
+  ypos -668
+ }
+ Input {
+  inputs 0
+  name Input16
+  xpos 1390
+  ypos -642
+  number 15
+ }
+ Merge2 {
+  inputs 2
+  name Merge16
+  xpos 1830
+  ypos -642
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*15))}}
+  center {{parent.petal16} {parent.petal16}}
+  name Transform16
+  xpos 1830
+  ypos -616
+ }
+ Input {
+  inputs 0
+  name Input15
+  xpos 1280
+  ypos -590
+  number 14
+ }
+ Merge2 {
+  inputs 2
+  name Merge15
+  xpos 1830
+  ypos -590
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*14))}}
+  center {{parent.petal15} {parent.petal15}}
+  name Transform15
+  xpos 1830
+  ypos -564
+ }
+ Input {
+  inputs 0
+  name Input14
+  xpos 1170
+  ypos -538
+  number 13
+ }
+ Merge2 {
+  inputs 2
+  name Merge14
+  xpos 1830
+  ypos -538
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*13))}}
+  center {{parent.petal14} {parent.petal14}}
+  name Transform14
+  xpos 1830
+  ypos -512
+ }
+ Input {
+  inputs 0
+  name Input13
+  xpos 1060
+  ypos -486
+  number 12
+ }
+ Merge2 {
+  inputs 2
+  name Merge13
+  xpos 1830
+  ypos -486
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*12))}}
+  center {{parent.petal13} {parent.petal13}}
+  name Transform13
+  xpos 1830
+  ypos -460
+ }
+ Input {
+  inputs 0
+  name Input12
+  xpos 950
+  ypos -434
+  number 11
+ }
+ Merge2 {
+  inputs 2
+  name Merge12
+  xpos 1830
+  ypos -434
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*11))}}
+  center {{parent.petal12} {parent.petal12}}
+  name Transform12
+  xpos 1830
+  ypos -408
+ }
+ Input {
+  inputs 0
+  name Input11
+  xpos 840
+  ypos -382
+  number 10
+ }
+ Merge2 {
+  inputs 2
+  name Merge11
+  xpos 1830
+  ypos -382
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*10))}}
+  center {{parent.petal11} {parent.petal11}}
+  name Transform11
+  xpos 1830
+  ypos -356
+ }
+ Input {
+  inputs 0
+  name Input10
+  xpos 730
+  ypos -330
+  number 9
+ }
+ Merge2 {
+  inputs 2
+  name Merge10
+  xpos 1830
+  ypos -330
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*9))}}
+  center {{parent.petal10} {parent.petal10}}
+  name Transform10
+  xpos 1830
+  ypos -304
+ }
+ Input {
+  inputs 0
+  name Input9
+  xpos 620
+  ypos -278
+  number 8
+ }
+ Merge2 {
+  inputs 2
+  name Merge9
+  xpos 1830
+  ypos -278
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*8))}}
+  center {{parent.petal9} {parent.petal9}}
+  name Transform9
+  xpos 1830
+  ypos -252
+ }
+ Input {
+  inputs 0
+  name Input8
+  xpos 510
+  ypos -226
+  number 7
+ }
+ Merge2 {
+  inputs 2
+  name Merge8
+  xpos 1830
+  ypos -226
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*7))}}
+  center {{parent.petal8} {parent.petal8}}
+  name Transform8
+  xpos 1830
+  ypos -200
+ }
+ Input {
+  inputs 0
+  name Input7
+  xpos 400
+  ypos -174
+  number 6
+ }
+ Merge2 {
+  inputs 2
+  name Merge7
+  xpos 1830
+  ypos -174
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*6))}}
+  center {{parent.petal7} {parent.petal7}}
+  name Transform7
+  xpos 1830
+  ypos -148
+ }
+ Input {
+  inputs 0
+  name Input6
+  xpos 290
+  ypos -122
+  number 5
+ }
+ Merge2 {
+  inputs 2
+  name Merge6
+  xpos 1830
+  ypos -122
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*5))}}
+  center {{parent.petal6} {parent.petal6}}
+  name Transform6
+  xpos 1830
+  ypos -96
+ }
+ Input {
+  inputs 0
+  name Input5
+  xpos 180
+  ypos -70
+  number 4
+ }
+ Merge2 {
+  inputs 2
+  name Merge5
+  xpos 1830
+  ypos -70
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*4))}}
+  center {{parent.petal5} {parent.petal5}}
+  name Transform5
+  xpos 1830
+  ypos -44
+ }
+ Input {
+  inputs 0
+  name Input4
+  xpos 70
+  ypos -18
+  number 3
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 1830
+  ypos -18
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*3))}}
+  center {{parent.petal4} {parent.petal4}}
+  name Transform4
+  xpos 1830
+  ypos 8
+ }
+ Input {
+  inputs 0
+  name Input3
+  xpos -40
+  ypos 34
+  number 2
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 1830
+  ypos 34
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*2))}}
+  center {{parent.petal3} {parent.petal3}}
+  name Transform3
+  xpos 1830
+  ypos 60
+ }
+ Input {
+  inputs 0
+  name Input2
+  xpos -150
+  ypos 86
+  number 1
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 1830
+  ypos 86
+ }
+ Transform {
+  scale {{parent.scale(x-(desfase*1))}}
+  center {{parent.petal2} {parent.petal2}}
+  name Transform2
+  xpos 1830
+  ypos 112
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -260
+  ypos 138
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  selected true
+  xpos 1830
+  ypos 138
+ }
+ Transform {
+  scale {{parent.scale}}
+  center {{parent.petal1} {parent.petal1}}
+  name Transform1
+  xpos 1830
+  ypos 164
+ }
+ Output {
+  name Output1
+  xpos 1830
+  ypos 291
+ }
+end_group
