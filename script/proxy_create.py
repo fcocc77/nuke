@@ -37,6 +37,6 @@ for read in nuke.selectedNodes():
 	write["afterRender"].setValue("postRender(\"" + read["name"].value() + "\",\"" + proxy_file + "\")")
 	nuke.root().setProxy(False)
 
-	nuke.execute(write,read.firstFrame(),read.lastFrame(),2)
+	nuke.execute(write,read.firstFrame(),read.lastFrame(),1)
 
 	
