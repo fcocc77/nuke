@@ -36,7 +36,7 @@ def createProxy():
 		write["name"].setValue("write_proxy")
 		write["file"].setValue(proxy_file)
 		write["_jpeg_quality"].setValue(1)
-		write["afterRender"].setValue("postRender(\"" + read["name"].value() + "\",\"" + proxy_file + "\")")
+		write["afterRender"].setValue("proxy_create.postRender(\"" + read["name"].value() + "\",\"" + proxy_file + "\")")
 		nuke.root().setProxy(False)
 
 		nuke.execute(write,read.firstFrame(),read.lastFrame(),1)
