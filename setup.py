@@ -16,7 +16,7 @@ class gizmos_setup():
             if platform == "win32":
                 self.plugins = "C:/Program Files/"+nv+"/plugins/"
             if platform == "linux2":
-                self.plugins = "/usr/local/"+nv+"/plugins/"
+                self.plugins = "/opt/"+nv+"/plugins/"
 
             self.menu = self.plugins+"menu.py"
             self.gizmos_src = path+"/gizmos/"
